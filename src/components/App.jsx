@@ -1,7 +1,13 @@
 import React from "react";
-import { Header } from "./Header";
-import { Profile } from "./Profile";
-import { Sidebar } from "./Sidebar";
+import { Route, BrowserRouter } from "react-router-dom";
+import { Header } from "./Header/Header";
+import { Sidebar } from "./Sidebar/Sidebar";
+
+import { Profile } from "./Profile/Profile";
+import { Dialogs } from "./Dialogs/Dialogs";
+import { Music } from "./Music/Music";
+import { News } from "./News/News";
+import { Settings } from "./Settings/Settings";
 
 export default class App extends React.Component {
   constructor() {
@@ -12,11 +18,19 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="app-wrapper">
-        <Header />
-        <Profile />
-        <Sidebar />
-      </div>
+      <BrowserRouter>
+        <div className="app-wrapper">
+          <Header />
+          <Sidebar />
+          <div className="content">
+            <Route path="/profile" component={Profile} />
+            <Route path="/messages" component={Dialogs} />
+            <Route path="/music" component={Music} />
+            <Route path="/news" component={News} />
+            <Route path="/settings" component={Settings} />
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

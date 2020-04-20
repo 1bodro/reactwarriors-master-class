@@ -1,0 +1,25 @@
+.container {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  max-width: 1280px;
+  // grid-area: h;
+  background: #fdd949;
+  border-radius: 0 0 6px 6px;
+}
+
+.logo {
+  position: relative;
+  height: 100%;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 0 0 0 6px;
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 100%;
+  }
+}

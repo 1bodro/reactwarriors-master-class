@@ -1,0 +1,31 @@
+.dialog {
+  padding: 4px 10px;
+  color: #052f47;
+  background: #fff5d1;
+  border-radius: 6px 0 0 6px;
+  border: 1px solid #ffffff;
+  border-right: none; 
+  margin-left: 10px;
+  cursor: pointer;
+  transition: margin-left .2s linear;
+  a {
+    color: #052f47;
+    text-decoration: none;
+  }
+  &.active {
+    font-weight: 700;
+    padding: 8px 10px;
+    margin-left: 0;
+    background: #fdd949;
+    border-radius: 6px 0 0 6px;
+    // border-color:#fbb000;
+    outline:  #fdd949
+  }
+  &:hover {
+    margin-left: 0;
+    a {
+      color: #477895;
+      text-decoration: none;
+    }
+  }
+}
