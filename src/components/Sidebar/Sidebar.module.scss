@@ -1,8 +1,11 @@
 .container {
-  grid-area: n;
+  position: fixed;
+  top: 90px;
+  // grid-area: n;
   height: calc(100vh - 90px);
+  width: 250px;
   background: #fdd949;
-  padding: 60px 0 20px 40px;
+  padding: 40px 0 20px 40px;
   border-radius: 0 6px 0 0;
 }
 
@@ -13,7 +16,6 @@
   font-weight: 700;
   padding: 5px 0 5px 10px;
   margin: 10px 0;
-border-radius: 6px 0 0 6px;
   &.active{
     background: white;
     color: #151515;
