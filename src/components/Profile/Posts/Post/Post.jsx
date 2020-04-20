@@ -2,6 +2,7 @@ import React from "react";
 import { Avatar } from "../../../Avatar/Avatar";
 import s from "./Post.module.scss";
 
+
 export const Post = props => {
   const { message, likesCout } = props;
 

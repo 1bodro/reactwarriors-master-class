@@ -16,19 +16,6 @@
   font-weight: 700;
   padding: 5px 0 5px 10px;
   margin: 10px 0;
-  border-radius: 6px 0 0 6px;
-  text-decoration: none;
-  &:hover {
-    color: #477895;
-    text-decoration: none;
-  }
-  &:active,
-  &:focus
-  &:visited {
-    text-decoration: none;
-    color: white;
-  }
-
   &.active{
     background: white;
     color: #151515;

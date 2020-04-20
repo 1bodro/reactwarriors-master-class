@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Route, BrowserRouter } from "react-router-dom";
 import { Header } from "./Header/Header";
 import { Sidebar } from "./Sidebar/Sidebar";
@@ -9,6 +10,7 @@ import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 
+
 export default class App extends React.Component {
   constructor() {
     super();
@@ -18,6 +20,7 @@ export default class App extends React.Component {
 
   render() {
     return (
+
       <BrowserRouter>
         <div className="app-wrapper">
           <Header />
