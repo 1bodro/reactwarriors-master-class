@@ -10,7 +10,6 @@ import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 
-
 export default class App extends React.Component {
   constructor() {
     super();
@@ -19,18 +18,28 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { data } = this.props;
     return (
-
       <BrowserRouter>
         <div className="app-wrapper">
           <Header />
           <Sidebar />
           <div className="content">
-            <Route path="/profile" component={Profile} />
-            <Route path="/messages" component={Dialogs} />
-            <Route path="/music" component={Music} />
-            <Route path="/news" component={News} />
-            <Route path="/settings" component={Settings} />
+            <Route
+              path="/profile"
+              render={() => <Profile data={data.posts} />}
+            />
+            <Route
+              path="/messages"
+              render={() => {
+                return (
+                  <Dialogs dialogs={data.dialogs} messages={data.messages} />
+                );
+              }}
+            />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/settings" render={() => <Settings />} />
           </div>
         </div>
       </BrowserRouter>

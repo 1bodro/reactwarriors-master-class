@@ -5,10 +5,10 @@ import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 
 import s from "./Profile.module.scss";
 
-export const Profile = () => {
+export const Profile = props => {
+  const { data } = props;
   return (
     <div className={s.container}>
-
       <div className={s.banner}>
         <div className="content__img">
           <img
@@ -18,7 +18,7 @@ export const Profile = () => {
         </div>
       </div>
       <ProfileInfo />
-      <Posts />
+      <Posts data={data} />
     </div>
   );
 };

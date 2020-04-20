@@ -7,7 +7,7 @@ export const Dialog = props => {
   return (
     <div className={`${s.dialog}`}>
       <NavLink
-        to={`/dialogs/${id}`}
+        to={`/messages/${id}`}
         className={s.navLink}
         activeClassName={s.active}
       >

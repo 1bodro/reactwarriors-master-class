@@ -20,4 +20,11 @@
     background: white;
     color: #151515;
   }
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    color: #477895;
+    text-decoration: none;
+  }
 }
