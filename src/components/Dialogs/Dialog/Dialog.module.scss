@@ -1,32 +1,36 @@
 .dialog {
-  padding: 4px 10px;
   color: #052f47;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  color: #052f47;
+  text-decoration: none;
+  margin-left: 10px;
   background: #fff5d1;
   border-radius: 6px 0 0 6px;
   border: 1px solid #ffffff;
   border-right: none; 
-  margin-left: 10px;
   cursor: pointer;
-  transition: margin-left .2s linear;
-  a {
-    display: block;
-    color: #052f47;
-    text-decoration: none;
-  }
+  transition: margin-left .2s linear, background .2s linear;
   &.active {
     font-weight: 700;
-    padding: 8px 10px;
+    padding: 6px 10px;
     margin-left: 0;
     background: #fdd949;
     border-radius: 6px 0 0 6px;
     // border-color:#fbb000;
-    outline:  #fdd949
+    outline:  #fdd949;
+    margin-left: 0;
   }
   &:hover {
-    margin-left: 0;
-    a {
       color: #477895;
       text-decoration: none;
+      margin-left: 0;
     }
-  }
+}
+.name{
+  margin-left: 10px;
 }

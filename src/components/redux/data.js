@@ -1,3 +1,5 @@
+import { renderEntireTree } from "../../render";
+
 export const posts = [
   {
     text: "Hello, Kate, are you coming to my party today?",
@@ -30,43 +32,108 @@ export const posts = [
 ];
 
 export const dialogs = [
-  { id: 1, name: "Oleg" },
-  { id: 2, name: "Dima" },
-  { id: 3, name: "Nastya" },
-  { id: 4, name: "Andrew" },
-  { id: 5, name: "Nick" },
-  { id: 6, name: "Carl" },
-  { id: 7, name: "Igor" }
+  {
+    id: 1,
+    name: "Oleg",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQFcpYKqisnRqx3SsfJjs7ME3XspbX3u81KprS2gvGUN0k9ipu&usqp=CAU"
+  },
+  {
+    id: 2,
+    name: "Dima",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRIiP5QEbMyxe3ECk50ttuLQtxZlcEFC-IylJ1nM3XkbE_kKKjV&usqp=CAU"
+  },
+  {
+    id: 3,
+    name: "Nastya",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTutulh2jefGmRfWlymj5ud4X3A5jP8n_PEgwQkg59kATxDzqiX&s"
+  },
+  {
+    id: 4,
+    name: "Andrew",
+    photo:
+      "https://i.pinimg.com/236x/a8/63/8a/a8638ab3fe610ee12e14793716bf4cdf--adventure-time.jpg"
+  },
+  {
+    id: 5,
+    name: "Nick",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuXqZcCaOGqS11R987XRUigBILp6F6jbM7_XtH6cZBa7Cwv84&s"
+  },
+  {
+    id: 6,
+    name: "Carl",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaE17LvgaiY6b6iOADw_VPun2nsnZb2olbi-FUmFc9iCAFMLXh&s"
+  },
+  {
+    id: 7,
+    name: "Igor",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX6x7CnL6sr0E5H0g4djyb4PqmLlcgQVToF2-u_ewiszUtfxvt&s"
+  }
 ];
 
 export const messages = [
   {
-    id: 1,
+    idUser: 12,
+    idMsg: 135,
     text: "Hello, Kate, are you coming to my party today?"
   },
-  { id: 2, text: "Hello, on what occasion is the party?" },
+  { idUser: 1, idMsg: 15, text: "Hello, on what occasion is the party?" },
   {
-    id: 3,
+    idUser: 12,
+    idMsg: 135,
     text: "On the occasion of my arrival from Spain."
   },
   {
-    id: 4,
+    idUser: 1,
+    idMsg: 14,
     text: "Oh, my God, I completely forgot, sorry, of course, I’ll be there!",
     likesCout: 9
   },
-  { id: 5, text: "And who else is invited" },
+  { idUser: 12, idMsg: 1305, text: "And who else is invited" },
   {
-    id: 6,
+    idUser: 1,
+    idMsg: 175,
     text:
       "Lily, Marry, Jenny – you know them, and a couple of good-looking guys!"
   },
   {
-    id: 7,
+    idUser: 12,
+    idMsg: 1335,
     text: "Оh, it ‘ll be fun! What shall I bring with me?"
   },
   {
-    id: 8,
+    idUser: 1,
+    idMsg: 12345,
     text:
       "Please, take a few bottles of Cola and some snacks: crisps, for example."
   }
 ];
+
+export const user = {
+  id: 1,
+  name: "Andrew",
+  desc: "Description",
+  photo:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU"
+};
+
+export const addPost = postMsg => {
+  let newPost = {
+    id: 123,
+    message: postMsg,
+    likesCout: 0
+  };
+
+  posts.push(newPost);
+  renderEntireTree({
+    posts: posts,
+    dialogs: dialogs,
+    messages: messages,
+    user: user
+  });
+};

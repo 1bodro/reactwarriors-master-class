@@ -1,9 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Avatar } from "../../Avatar/Avatar";
 import s from "./Dialog.module.scss";
 
 export const Dialog = props => {
-  const { name, id } = props;
+  const { dialogData } = props;
+  const { name, id, photo } = dialogData;
   return (
     <div className={`${s.dialog}`}>
       <NavLink
@@ -11,7 +13,8 @@ export const Dialog = props => {
         className={s.navLink}
         activeClassName={s.active}
       >
-        {name}
+        <Avatar size="sm" src={photo} />
+        <span className={s.name}>{name}</span>
       </NavLink>
     </div>
   );

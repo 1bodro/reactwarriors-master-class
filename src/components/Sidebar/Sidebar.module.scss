@@ -16,12 +16,11 @@
   font-weight: 700;
   padding: 5px 0 5px 10px;
   margin: 10px 0;
+  text-decoration: none;
   &.active{
     background: white;
     color: #151515;
-  }
-  a {
-    text-decoration: none;
+    border-radius: 4px 0 0 4px;
   }
   &:hover {
     color: #477895;

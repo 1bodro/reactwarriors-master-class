@@ -1,15 +1,25 @@
 .photo {
-  margin: 10px;
+  margin: 0;
   border: 3px solid #fdd949;
+  padding: 2px;
   border-radius: 50%;
   overflow: hidden;
+  background:#ffffff;
+
+  &>div{
+    border-radius: 50%;
+  }
 }
 
 .sm {
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
 }
 .lg {
   width: 80px;
   height: 80px;
+  min-width: 80px;
+  min-height: 80px;
 }

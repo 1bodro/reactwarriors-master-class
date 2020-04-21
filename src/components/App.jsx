@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, addPost } = this.props;
     return (
       <BrowserRouter>
         <div className="app-wrapper">
@@ -27,13 +27,19 @@ export default class App extends React.Component {
           <div className="content">
             <Route
               path="/profile"
-              render={() => <Profile data={data.posts} />}
+              render={() => (
+                <Profile data={data.posts} user={data.user} addPost={addPost} />
+              )}
             />
             <Route
               path="/messages"
               render={() => {
                 return (
-                  <Dialogs dialogs={data.dialogs} messages={data.messages} />
+                  <Dialogs
+                    dialogs={data.dialogs}
+                    messages={data.messages}
+                    user={data.user}
+                  />
                 );
               }}
             />

@@ -7,11 +7,15 @@
   flex: 1 1 25%;
   max-width: 250px;
   min-width: 150px;
-  padding: 10px 4px 10px 0;
+  padding: 0 4px 10px 0;
   border-right: 2px solid #578700;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .listMessages {
   flex: 1 1 75%;
-  padding: 10px 10px 10px 40px;
+  padding: 10px 20px 10px 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

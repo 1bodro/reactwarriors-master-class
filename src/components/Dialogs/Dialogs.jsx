@@ -4,18 +4,18 @@ import { Message } from "./Message/Message";
 import s from "./Dialogs.module.scss";
 
 export const Dialogs = props => {
-  const { dialogs: dialogsData, messages: messagesData } = props;
+  const { dialogs: dialogsData, messages: messagesData, user } = props;
 
   return (
     <div className={s.container}>
-      <div className={s.listDialogs}>
-        {dialogsData.map(dialog => (
-          <Dialog id={dialog.id} name={dialog.name} />
+      <div className={`${s.listDialogs} customScrollbar`}>
+        {dialogsData.map(dialogData => (
+          <Dialog dialogData={dialogData} />
         ))}
       </div>
-      <div className={s.listMessages}>
+      <div className={`${s.listMessages} customScrollbar`}>
         {messagesData.map(message => (
-          <Message message={message.text} />
+          <Message message={message} user={user} />
         ))}
       </div>
     </div>
