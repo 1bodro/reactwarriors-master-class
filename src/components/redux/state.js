@@ -1,4 +1,36 @@
-import { renderEntireTree } from "../../render";
+export const profile = {
+  posts: [
+    {
+      text: "Hello, Kate, are you coming to my party today?",
+      likesCout: 11
+    },
+    { id: 2, text: "Hello, on what occasion is the party?", likesCout: 3 },
+    {
+      text: "On the occasion of my arrival from Spain.",
+      likesCout: 7
+    },
+    {
+      text: "Oh, my God, I completely forgot, sorry, of course, I’ll be there!",
+      likesCout: 9
+    },
+    { text: "And who else is invited", likesCout: 18 },
+    {
+      text:
+        "Lily, Marry, Jenny – you know them, and a couple of good-looking guys!",
+      likesCout: 1
+    },
+    {
+      text: "Оh, it ‘ll be fun! What shall I bring with me?",
+      likesCout: 7
+    },
+    {
+      text:
+        "Please, take a few bottles of Cola and some snacks: crisps, for example.",
+      likesCout: 4
+    }
+  ],
+  newPostText: "Write here..."
+};
 
 export const posts = [
   {
@@ -120,20 +152,4 @@ export const user = {
   desc: "Description",
   photo:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU"
-};
-
-export const addPost = postMsg => {
-  let newPost = {
-    id: 123,
-    message: postMsg,
-    likesCout: 0
-  };
-
-  posts.push(newPost);
-  renderEntireTree({
-    posts: posts,
-    dialogs: dialogs,
-    messages: messages,
-    user: user
-  });
 };

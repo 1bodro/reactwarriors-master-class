@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { data, addPost } = this.props;
+    const { data, handler } = this.props;
     return (
       <BrowserRouter>
         <div className="app-wrapper">
@@ -28,7 +28,12 @@ export default class App extends React.Component {
             <Route
               path="/profile"
               render={() => (
-                <Profile data={data.posts} user={data.user} addPost={addPost} />
+                <Profile
+                  data={data.profile}
+                  user={data.user}
+                  addPost={handler.addPost}
+                  updatePostText={handler.updatePostText}
+                />
               )}
             />
             <Route
