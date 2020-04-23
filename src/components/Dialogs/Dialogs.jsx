@@ -1,10 +1,10 @@
 import React from "react";
 import { Dialog } from "./Dialog/Dialog";
-import { Message } from "./Message/Message";
+import { Messages } from "./Messages/Messages";
 import s from "./Dialogs.module.scss";
 
 export const Dialogs = props => {
-  const { dialogs: dialogsData, messages: messagesData, user } = props;
+  const { dialogs: dialogsData, messages, user } = props;
 
   return (
     <div className={s.container}>
@@ -13,11 +13,7 @@ export const Dialogs = props => {
           <Dialog dialogData={dialogData} />
         ))}
       </div>
-      <div className={`${s.listMessages} customScrollbar`}>
-        {messagesData.map(message => (
-          <Message message={message} user={user} />
-        ))}
-      </div>
+      <Messages messages={messages} user={user} />
     </div>
   );
 };

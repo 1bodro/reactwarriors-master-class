@@ -1,10 +1,17 @@
 import React from "react";
 import { Post } from "./Post/Post";
 import s from "./Posts.module.scss";
+import {
+  addPostActionCreator,
+  updatePostTextActionCreator
+} from "../../redux/state";
 
 export const Posts = props => {
-  const { userPhoto, addPost, updatePostText } = props;
-  const { posts, newPostText } = props.data;
+  const {
+    userPhoto,
+    dispatch,
+    data: { posts, newPostText }
+  } = props;
 
   const postsElements = posts.map(post => (
     <Post message={post.text} likesCout={post.likesCout} photo={userPhoto} />
@@ -13,12 +20,14 @@ export const Posts = props => {
   let textareaRef = React.createRef();
 
   const sendPost = () => {
-    addPost();
+    dispatch(addPostActionCreator());
+    // addPost();
     // updatePostText("");
   };
 
   const updatePost = () => {
-    updatePostText(textareaRef.current.value);
+    dispatch(updatePostTextActionCreator(textareaRef.current.value));
+    // updatePostText(textareaRef.current.value);
   };
 
   return (
@@ -26,7 +35,6 @@ export const Posts = props => {
       <div className={s.write}>
         <textarea
           ref={textareaRef}
-          defaultValue="Write here..."
           value={newPostText}
           className="textarea"
           onChange={updatePost}

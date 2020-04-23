@@ -13,12 +13,7 @@ export const Sidebar = () => {
       >
         Profile
       </NavLink>
-      <NavLink
-        exact
-        to="/messages"
-        className={s.navLink}
-        activeClassName={s.active}
-      >
+      <NavLink to="/messages/" className={s.navLink} activeClassName={s.active}>
         Messages
       </NavLink>
       <NavLink

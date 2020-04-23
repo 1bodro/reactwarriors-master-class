@@ -6,7 +6,7 @@ import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 import s from "./Profile.module.scss";
 
 export const Profile = props => {
-  const { data, user, addPost, updatePostText } = props;
+  const { data, user, dispatch } = props;
   return (
     <div className={s.container}>
       <div className={s.banner}>
@@ -21,8 +21,7 @@ export const Profile = props => {
       <Posts
         data={data}
         userPhoto={user.photo}
-        addPost={addPost}
-        updatePostText={updatePostText}
+        dispatch={dispatch}
       />
     </div>
   );

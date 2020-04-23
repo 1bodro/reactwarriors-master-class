@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { data, handler } = this.props;
+    const { data, dispatch } = this.props;
     return (
       <BrowserRouter>
         <div className="app-wrapper">
@@ -31,8 +31,7 @@ export default class App extends React.Component {
                 <Profile
                   data={data.profile}
                   user={data.user}
-                  addPost={handler.addPost}
-                  updatePostText={handler.updatePostText}
+                  dispatch={dispatch}
                 />
               )}
             />
