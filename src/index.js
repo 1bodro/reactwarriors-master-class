@@ -5,7 +5,7 @@ import App from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/main.scss";
 import * as data from "./components/redux/data";
-import { store } from "./components/redux/state";
+import { store } from "./components/redux/store";
 
 const renderEntireTree = data => {
   ReactDOM.render(
