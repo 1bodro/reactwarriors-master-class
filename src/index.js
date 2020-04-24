@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/main.scss";
@@ -8,7 +9,9 @@ import { store } from "./components/redux/state";
 
 const renderEntireTree = data => {
   ReactDOM.render(
-    <App data={data} dispatch={store.dispatch.bind(store)} />,
+    <BrowserRouter>
+      <App data={data} dispatch={store.dispatch.bind(store)} />
+    </BrowserRouter>,
     document.getElementById("root")
   );
 };

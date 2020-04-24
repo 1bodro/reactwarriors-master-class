@@ -1,10 +1,7 @@
 import React from "react";
 import { Post } from "./Post/Post";
 import s from "./Posts.module.scss";
-import {
-  addPostActionCreator,
-  updatePostTextActionCreator
-} from "../../redux/state";
+import { addPostCreator, updatePostTextCreator } from "../../redux/state";
 
 export const Posts = props => {
   const {
@@ -20,13 +17,13 @@ export const Posts = props => {
   let textareaRef = React.createRef();
 
   const sendPost = () => {
-    dispatch(addPostActionCreator());
+    dispatch(addPostCreator());
     // addPost();
     // updatePostText("");
   };
 
   const updatePost = () => {
-    dispatch(updatePostTextActionCreator(textareaRef.current.value));
+    dispatch(updatePostTextCreator(textareaRef.current.value));
     // updatePostText(textareaRef.current.value);
   };
 

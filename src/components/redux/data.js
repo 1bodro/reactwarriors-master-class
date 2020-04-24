@@ -63,7 +63,7 @@ export const posts = [
   }
 ];
 
-export const dialogs = [
+const dialogs = [
   {
     id: 1,
     name: "Oleg",
@@ -108,7 +108,7 @@ export const dialogs = [
   }
 ];
 
-export const messages = [
+const messages = [
   {
     idUser: 12,
     idMsg: 135,
@@ -123,8 +123,7 @@ export const messages = [
   {
     idUser: 1,
     idMsg: 14,
-    text: "Oh, my God, I completely forgot, sorry, of course, I’ll be there!",
-    likesCout: 9
+    text: "Oh, my God, I completely forgot, sorry, of course, I’ll be there!"
   },
   { idUser: 12, idMsg: 1305, text: "And who else is invited" },
   {
@@ -145,6 +144,12 @@ export const messages = [
       "Please, take a few bottles of Cola and some snacks: crisps, for example."
   }
 ];
+
+export const dialogsPage = {
+  dialogs: dialogs,
+  messages: messages,
+  newMesssageText: ""
+};
 
 export const user = {
   id: 1,

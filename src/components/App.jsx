@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Header } from "./Header/Header";
 import { Sidebar } from "./Sidebar/Sidebar";
 
@@ -20,39 +20,37 @@ export default class App extends React.Component {
   render() {
     const { data, dispatch } = this.props;
     return (
-      <BrowserRouter>
-        <div className="app-wrapper">
-          <Header />
-          <Sidebar />
-          <div className="content">
-            <Route
-              path="/profile"
-              render={() => (
-                <Profile
-                  data={data.profile}
-                  user={data.user}
+      <div className="app-wrapper">
+        <Header />
+        <Sidebar />
+        <div className="content">
+          <Route
+            path="/profile"
+            render={() => (
+              <Profile
+                data={data.profile}
+                user={data.user}
+                dispatch={dispatch}
+              />
+            )}
+          />
+          <Route
+            path="/messages"
+            render={() => {
+              return (
+                <Dialogs
                   dispatch={dispatch}
+                  dialogsPage={data.dialogsPage}
+                  user={data.user}
                 />
-              )}
-            />
-            <Route
-              path="/messages"
-              render={() => {
-                return (
-                  <Dialogs
-                    dialogs={data.dialogs}
-                    messages={data.messages}
-                    user={data.user}
-                  />
-                );
-              }}
-            />
-            <Route path="/music" render={() => <Music />} />
-            <Route path="/news" render={() => <News />} />
-            <Route path="/settings" render={() => <Settings />} />
-          </div>
+              );
+            }}
+          />
+          <Route path="/music" render={() => <Music />} />
+          <Route path="/news" render={() => <News />} />
+          <Route path="/settings" render={() => <Settings />} />
         </div>
-      </BrowserRouter>
+      </div>
     );
   }
 }
