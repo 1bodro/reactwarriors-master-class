@@ -28,7 +28,7 @@ export default class App extends React.Component {
             path="/profile"
             render={() => (
               <Profile
-                data={data.profile}
+                data={data.profilePage}
                 user={data.user}
                 dispatch={dispatch}
               />

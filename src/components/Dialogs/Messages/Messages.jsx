@@ -4,7 +4,7 @@ import { Message } from "./Message/Message";
 import {
   sendMessageCreator,
   updateMessageTextCreator
-} from "../../redux/state";
+} from "../../redux/dialogs_reduser";
 
 export const Messages = props => {
   const { messages: messagesData, newMesssageText, user, dispatch } = props;
@@ -30,6 +30,7 @@ export const Messages = props => {
           value={newMesssageText}
           className="textarea"
           onChange={updateMessage}
+          placeholder="Enter your message"
         />
         <button className={s.btnSend} onClick={sendMessage}>
           send
