@@ -1,15 +1,12 @@
 import React from "react";
 import { Post } from "./Post/Post";
 import s from "./Posts.module.scss";
-import {
-  addPostCreator,
-  updatePostTextCreator
-} from "../../redux/profile_reduser";
 
 export const Posts = props => {
   const {
+    updatePost,
+    sendPost,
     userPhoto,
-    dispatch,
     data: { posts, newPostText }
   } = props;
 
@@ -19,17 +16,17 @@ export const Posts = props => {
 
   let textareaRef = React.createRef();
 
-  const sendPost = () => {
-    dispatch(addPostCreator());
+  const onSendPost = () => {
+    sendPost();
     // addPost();
     // updatePostText("");
   };
 
-  const updatePost = () => {
-    dispatch(updatePostTextCreator(textareaRef.current.value));
+  const onUpdatePost = () => {
+    updatePost(textareaRef.current.value);
     // updatePostText(textareaRef.current.value);
   };
-
+ 
   return (
     <div className={s.container}>
       <div className={s.write}>
@@ -37,9 +34,9 @@ export const Posts = props => {
           ref={textareaRef}
           value={newPostText}
           className="textarea"
-          onChange={updatePost}
+          onChange={onUpdatePost}
         />
-        <button className={s.btnSend} onClick={sendPost}>
+        <button className={s.btnSend} onClick={onSendPost}>
           send
         </button>
       </div>

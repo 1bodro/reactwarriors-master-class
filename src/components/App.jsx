@@ -18,32 +18,17 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { data, dispatch } = this.props;
+    const { store } = this.props;
     return (
       <div className="app-wrapper">
         <Header />
         <Sidebar />
         <div className="content">
-          <Route
-            path="/profile"
-            render={() => (
-              <Profile
-                data={data.profilePage}
-                user={data.user}
-                dispatch={dispatch}
-              />
-            )}
-          />
+          <Route path="/profile" render={() => <Profile store={store} />} />
           <Route
             path="/messages"
             render={() => {
-              return (
-                <Dialogs
-                  dispatch={dispatch}
-                  dialogsPage={data.dialogsPage}
-                  user={data.user}
-                />
-              );
+              return <Dialogs store={store} />;
             }}
           />
           <Route path="/music" render={() => <Music />} />

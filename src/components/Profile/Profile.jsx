@@ -1,12 +1,14 @@
 import React from "react";
-import { Posts } from "./Posts/Posts";
+import { PostsContainer } from "./Posts/PostsContainer";
 
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 
 import s from "./Profile.module.scss";
 
 export const Profile = props => {
-  const { data, user, dispatch } = props;
+  const { store } = props;
+  const { user } = store.getState();
+
   return (
     <div className={s.container}>
       <div className={s.banner}>
@@ -18,11 +20,7 @@ export const Profile = props => {
         </div>
       </div>
       <ProfileInfo user={user} />
-      <Posts
-        data={data}
-        userPhoto={user.photo}
-        dispatch={dispatch}
-      />
+      <PostsContainer store={store} />
     </div>
   );
 };

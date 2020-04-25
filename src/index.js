@@ -5,16 +5,23 @@ import App from "./components/App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/main.scss";
 import * as data from "./components/redux/data";
-import { store } from "./components/redux/store";
+import store from "./components/redux/redux_store";
+import StoreContext from "./StoreContext";
 
 const renderEntireTree = data => {
   ReactDOM.render(
     <BrowserRouter>
-      <App data={data} dispatch={store.dispatch.bind(store)} />
+      <StoreContext.Provider value={store}>
+        <App store={store} />
+      </StoreContext.Provider>
     </BrowserRouter>,
     document.getElementById("root")
   );
 };
 
+function subscribeHandler() {
+  renderEntireTree(store.getState());
+}
+
 renderEntireTree(store.getState());
-store.subscribe(renderEntireTree);
+store.subscribe(subscribeHandler);

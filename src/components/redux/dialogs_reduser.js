@@ -1,7 +1,10 @@
+import {dialogsPage} from "./data";
+
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const SEND_MESSAGE = "SEND-MESSAGE";
 
-const dialogsReduser = (state, action) => {
+
+const dialogsReduser = (state=dialogsPage, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
       let newMessage = {

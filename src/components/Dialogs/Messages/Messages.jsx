@@ -1,26 +1,22 @@
 import React from "react";
 import s from "./Messages.module.scss";
 import { Message } from "./Message/Message";
-import {
-  sendMessageCreator,
-  updateMessageTextCreator
-} from "../../redux/dialogs_reduser";
 
 export const Messages = props => {
-  const { messages: messagesData, newMesssageText, user, dispatch } = props;
+  const { messages, newMesssageText, user, updateMessage, sendMessage } = props;
   let textareaRef = React.createRef();
   let testRef = React.createRef();
 
-  const updateMessage = e => {
-    dispatch(updateMessageTextCreator(e.target.value));
+  const onUpdateMessage = e => {
+    updateMessage(e.target.value);
   };
-  const sendMessage = () => {
-    dispatch(sendMessageCreator());
+  const onSendMessage = () => {
+    sendMessage(); 
   };
   return (
     <div className={s.container}>
       <div className={`${s.listMessages} customScrollbar`}>
-        {messagesData.map(message => (
+        {messages.map(message => (
           <Message message={message} user={user} />
         ))}
       </div>
@@ -29,10 +25,10 @@ export const Messages = props => {
           ref={textareaRef}
           value={newMesssageText}
           className="textarea"
-          onChange={updateMessage}
+          onChange={onUpdateMessage}
           placeholder="Enter your message"
         />
-        <button className={s.btnSend} onClick={sendMessage}>
+        <button className={s.btnSend} onClick={onSendMessage}>
           send
         </button>
       </div>

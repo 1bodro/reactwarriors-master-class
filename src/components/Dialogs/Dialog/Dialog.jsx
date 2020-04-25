@@ -4,8 +4,10 @@ import { Avatar } from "../../Avatar/Avatar";
 import s from "./Dialog.module.scss";
 
 export const Dialog = props => {
-  const { dialogData } = props;
-  const { name, id, photo } = dialogData;
+  const {
+    dialog: { name, id, photo }
+  } = props;
+
   return (
     <div className={`${s.dialog}`}>
       <NavLink

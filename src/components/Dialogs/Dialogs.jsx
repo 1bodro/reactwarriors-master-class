@@ -1,28 +1,22 @@
 import React from "react";
 import { Dialog } from "./Dialog/Dialog";
-import { Messages } from "./Messages/Messages";
+import { MessagesContainer } from "./Messages/MessagesContainer";
 import s from "./Dialogs.module.scss";
 
 export const Dialogs = props => {
+  const { store } = props;
   const {
-    dialogsPage: { dialogs, messages, newMesssageText },
-    user,
-    dispatch
-  } = props;
+    dialogsPage: { dialogs }
+  } = store.getState();
 
   return (
     <div className={s.container}>
       <div className={`${s.listDialogs} customScrollbar`}>
-        {dialogs.map(dialogData => (
-          <Dialog dialogData={dialogData} />
+        {dialogs.map(dialog => (
+          <Dialog dialog={dialog} />
         ))}
       </div>
-      <Messages
-        newMesssageText={newMesssageText}
-        dispatch={dispatch}
-        messages={messages}
-        user={user}
-      />
+      <MessagesContainer store={store} />
     </div>
   );
 };
