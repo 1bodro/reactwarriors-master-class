@@ -5,19 +5,29 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 const profileReduser = (state = profilePage, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let newPost = {
         id: 123,
         text: state.newPostText,
         likesCout: 0
       };
-      state.newPostText = "";
-      state.posts.push(newPost);
-      return state;
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
 
+      let stateCopy = { ...state };
+
+      stateCopy.newPostText = { ...state.newPostText };
+      stateCopy.posts = [...state.posts];
+      stateCopy.posts.push(newPost);
+      stateCopy.newPostText = "";
+
+      return stateCopy;
+    }
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+
+      stateCopy.newPostText = action.newText;
+
+      return stateCopy;
+    }
     default:
       return state;
   }
