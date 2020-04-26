@@ -9,6 +9,7 @@ import { Dialogs } from "./Dialogs/Dialogs";
 import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
+import { FindUsersContainer } from "./FindUsers/FindUsers";
 
 export default class App extends React.Component {
   constructor() {
@@ -28,6 +29,12 @@ export default class App extends React.Component {
             path="/messages"
             render={() => {
               return <Dialogs />;
+            }}
+          />
+          <Route
+            path="/users"
+            render={() => {
+              return <FindUsersContainer />;
             }}
           />
           <Route path="/music" render={() => <Music />} />

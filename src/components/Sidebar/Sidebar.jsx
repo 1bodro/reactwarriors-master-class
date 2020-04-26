@@ -34,6 +34,14 @@ export const Sidebar = () => {
       </NavLink>
       <NavLink
         exact
+        to="/users"
+        className={s.navLink}
+        activeClassName={s.active}
+      >
+        Find users
+      </NavLink>
+      <NavLink
+        exact
         to="/settings"
         className={s.navLink}
         activeClassName={s.active}

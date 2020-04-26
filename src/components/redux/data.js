@@ -116,10 +116,108 @@ const messages = [
   }
 ];
 
+const users = [
+  {
+    id: 1,
+    fullName: "Dmitry",
+    followed: true,
+    status: "People rejoice at the Sun, and I'm dreaming of the Moon",
+    location: {
+      country: "Belarus",
+      city: "Minsk"
+    }
+  },
+  {
+    id: 2,
+    followed: false,
+    fullName: "Oleg",
+    status: "Illusion is the first of all pleasures",
+    location: {
+      country: "Belarus",
+      city: "Brest"
+    }
+  },
+  {
+    id: 3,
+    followed: false,
+    fullName: "Ann",
+    status: "Forever young",
+    location: {
+      country: "Ukraine",
+      city: "Kiyv"
+    }
+  },
+  {
+    id: 4,
+    followed: false,
+    fullName: "Mike",
+    status: "Every exit is an entry somewhere else",
+    location: {
+      country: "USA",
+      city: "Washington"
+    }
+  },
+  {
+    id: 5,
+    followed: true,
+    fullName: "Mariusz",
+    status: "Nothing is more silly than silly laughter",
+    location: {
+      country: "Poland",
+      city: "Warszawa"
+    }
+  },
+  {
+    id: 6,
+    followed: false,
+    fullName: "Andrew",
+    status: "To find yourself, think for yourself",
+    location: {
+      country: "Ukraine",
+      city: "Lviv"
+    }
+  },
+  {
+    id: 7,
+    followed: true,
+    fullName: "Irina",
+    status: "i'm a boss",
+    location: {
+      country: "Ukraine",
+      city: "Kharkov"
+    }
+  },
+  {
+    id: 8,
+    followed: false,
+    fullName: "Sasha",
+    status:
+      "Fear transfers the clever into the silly, and makes the strong be the weak",
+    location: {
+      country: "Belarus",
+      city: "Pinsk"
+    }
+  },
+  {
+    id: 9,
+    followed: true,
+    fullName: "Kostya",
+    status: "begins with a single step",
+    location: {
+      country: "Ukraine",
+      city: "Odessa"
+    }
+  }
+];
+
 export const dialogsPage = {
   chats: chats,
   messages: messages,
   newMesssageText: ""
+};
+
+export const findUsersPage = {
+  users: users
 };
 
 export const profilePage = {
