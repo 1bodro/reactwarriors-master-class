@@ -6,8 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/main.scss";
 // import * as data from "./components/redux/data";
 import store from "./components/redux/redux_store";
-import { Provider } from "./StoreContext";
-
+import { Provider } from "react-redux";
 const renderEntireTree = data => {
   ReactDOM.render(
     <BrowserRouter>

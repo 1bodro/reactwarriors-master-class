@@ -1,17 +1,10 @@
-import React from "react";
 import { Chats } from "./Chats";
-import StoreContext from "../../../StoreContext";
+import { connect } from "react-redux";
 
-export const ChatsContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {store => {
-        const {
-          dialogsPage: { chats }
-        } = store.getState();
-
-        return <Chats chats={chats} />;
-      }}
-    </StoreContext.Consumer>
-  );
+const mapStateToProps = state => {
+  return {
+    chats: state.dialogsPage.chats
+  };
 };
+
+export const ChatsContainer = connect(mapStateToProps)(Chats);

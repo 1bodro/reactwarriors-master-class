@@ -7,7 +7,7 @@ export const Posts = props => {
     updatePost,
     sendPost,
     userPhoto,
-    data: { posts, newPostText }
+    profilePage: { posts, newPostText }
   } = props;
 
   const postsElements = posts.map(post => (
@@ -26,7 +26,7 @@ export const Posts = props => {
     updatePost(textareaRef.current.value);
     // updatePostText(textareaRef.current.value);
   };
- 
+
   return (
     <div className={s.container}>
       <div className={s.write}>
