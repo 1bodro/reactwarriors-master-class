@@ -1,19 +1,29 @@
 import { FindUsers } from "./FindUsers";
 import { setUsersAC, followAC, unFollowAC } from "../redux/find_users_reduser";
 import { connect } from "react-redux";
-import { findUsersPage } from "../redux/data";
 
 const mapStateToProps = state => {
   return {
-    users: findUsersPage.users
+    users: state.findUsersPage.users
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    follow: userId => {
+      dispatch(followAC(userId));
+    },
+    unFollow: userId => {
+      console.log(userId);
+      dispatch(unFollowAC(userId));
+    },
+    setUsers: users => {
+      dispatch(setUsersAC(users));
+    }
+  };
 };
 
-export const PostsContainer = connect(
+export const FindUsersContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(FindUsers);

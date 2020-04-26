@@ -9,7 +9,7 @@ import { Dialogs } from "./Dialogs/Dialogs";
 import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
-import { FindUsersContainer } from "./FindUsers/FindUsers";
+import { FindUsersContainer } from "./FindUsers/FindUsersContainer";
 
 export default class App extends React.Component {
   constructor() {

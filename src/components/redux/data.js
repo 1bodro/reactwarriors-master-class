@@ -42,37 +42,37 @@ const chats = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQFcpYKqisnRqx3SsfJjs7ME3XspbX3u81KprS2gvGUN0k9ipu&usqp=CAU"
   },
   {
-    id: 2,
-    name: "Dima",
+    id: 5,
+    name: "Mariusz",
     photo:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRIiP5QEbMyxe3ECk50ttuLQtxZlcEFC-IylJ1nM3XkbE_kKKjV&usqp=CAU"
   },
   {
-    id: 3,
+    id: 7,
     name: "Nastya",
     photo:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTutulh2jefGmRfWlymj5ud4X3A5jP8n_PEgwQkg59kATxDzqiX&s"
   },
   {
-    id: 4,
+    id: 14,
     name: "Andrew",
     photo:
       "https://i.pinimg.com/236x/a8/63/8a/a8638ab3fe610ee12e14793716bf4cdf--adventure-time.jpg"
   },
   {
-    id: 5,
-    name: "Nick",
+    id: 9,
+    name: "Kostya",
     photo:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuXqZcCaOGqS11R987XRUigBILp6F6jbM7_XtH6cZBa7Cwv84&s"
   },
   {
-    id: 6,
+    id: 16,
     name: "Carl",
     photo:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaE17LvgaiY6b6iOADw_VPun2nsnZb2olbi-FUmFc9iCAFMLXh&s"
   },
   {
-    id: 7,
+    id: 17,
     name: "Igor",
     photo:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX6x7CnL6sr0E5H0g4djyb4PqmLlcgQVToF2-u_ewiszUtfxvt&s"
@@ -119,8 +119,10 @@ const messages = [
 const users = [
   {
     id: 1,
-    fullName: "Dmitry",
+    fullName: "Oleg",
     followed: true,
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQFcpYKqisnRqx3SsfJjs7ME3XspbX3u81KprS2gvGUN0k9ipu&usqp=CAU",
     status: "People rejoice at the Sun, and I'm dreaming of the Moon",
     location: {
       country: "Belarus",
@@ -130,7 +132,8 @@ const users = [
   {
     id: 2,
     followed: false,
-    fullName: "Oleg",
+    photo: "",
+    fullName: "Dmitry",
     status: "Illusion is the first of all pleasures",
     location: {
       country: "Belarus",
@@ -140,6 +143,7 @@ const users = [
   {
     id: 3,
     followed: false,
+    photo: "",
     fullName: "Ann",
     status: "Forever young",
     location: {
@@ -150,6 +154,7 @@ const users = [
   {
     id: 4,
     followed: false,
+    photo: "",
     fullName: "Mike",
     status: "Every exit is an entry somewhere else",
     location: {
@@ -160,6 +165,8 @@ const users = [
   {
     id: 5,
     followed: true,
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRIiP5QEbMyxe3ECk50ttuLQtxZlcEFC-IylJ1nM3XkbE_kKKjV&usqp=CAU",
     fullName: "Mariusz",
     status: "Nothing is more silly than silly laughter",
     location: {
@@ -170,6 +177,7 @@ const users = [
   {
     id: 6,
     followed: false,
+    photo: "",
     fullName: "Andrew",
     status: "To find yourself, think for yourself",
     location: {
@@ -180,7 +188,9 @@ const users = [
   {
     id: 7,
     followed: true,
-    fullName: "Irina",
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTutulh2jefGmRfWlymj5ud4X3A5jP8n_PEgwQkg59kATxDzqiX&s",
+    fullName: "Nastya",
     status: "i'm a boss",
     location: {
       country: "Ukraine",
@@ -190,6 +200,7 @@ const users = [
   {
     id: 8,
     followed: false,
+    photo: "",
     fullName: "Sasha",
     status:
       "Fear transfers the clever into the silly, and makes the strong be the weak",
@@ -201,6 +212,8 @@ const users = [
   {
     id: 9,
     followed: true,
+    photo:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuXqZcCaOGqS11R987XRUigBILp6F6jbM7_XtH6cZBa7Cwv84&s",
     fullName: "Kostya",
     status: "begins with a single step",
     location: {
@@ -225,8 +238,6 @@ export const profilePage = {
   newPostText: ""
 };
 
-export const sidebar = {};
-
 export const user = {
   id: 111,
   name: "Andrew",
@@ -234,3 +245,5 @@ export const user = {
   photo:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU"
 };
+
+export const sidebar = {};
