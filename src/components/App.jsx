@@ -18,17 +18,16 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { store } = this.props;
     return (
       <div className="app-wrapper">
         <Header />
         <Sidebar />
         <div className="content">
-          <Route path="/profile" render={() => <Profile store={store} />} />
+          <Route path="/profile" render={() => <Profile />} />
           <Route
             path="/messages"
             render={() => {
-              return <Dialogs store={store} />;
+              return <Dialogs />;
             }}
           />
           <Route path="/music" render={() => <Music />} />

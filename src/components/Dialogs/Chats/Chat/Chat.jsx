@@ -1,15 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Avatar } from "../../Avatar/Avatar";
-import s from "./Dialog.module.scss";
+import { Avatar } from "../../../Avatar/Avatar";
+import s from "./Chat.module.scss";
 
-export const Dialog = props => {
+export const Chat = props => {
   const {
-    dialog: { name, id, photo }
+    chat: { name, id, photo }
   } = props;
 
   return (
-    <div className={`${s.dialog}`}>
+    <div className={`${s.container}`}>
       <NavLink
         to={`/messages/${id}`}
         className={s.navLink}

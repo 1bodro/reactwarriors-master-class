@@ -1,13 +1,13 @@
 import React from "react";
 import { PostsContainer } from "./Posts/PostsContainer";
 
-import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
+import { ProfileInfoContainer } from "./ProfileInfo/ProfileInfoContainer";
 
 import s from "./Profile.module.scss";
 
 export const Profile = props => {
-  const { store } = props;
-  const { user } = store.getState();
+  // const { store } = props;
+  // const { user } = store.getState();
 
   return (
     <div className={s.container}>
@@ -19,8 +19,8 @@ export const Profile = props => {
           />
         </div>
       </div>
-      <ProfileInfo user={user} />
-      <PostsContainer store={store} />
+      <ProfileInfoContainer />
+      <PostsContainer />
     </div>
   );
 };

@@ -30,7 +30,7 @@ const posts = [
   }
 ]
 
-const dialogs = [
+const chats = [
   {
     id: 1,
     name: "Oleg",
@@ -113,7 +113,7 @@ const messages = [
 ];
 
 export const dialogsPage = {
-  dialogs: dialogs,
+  chats: chats,
   messages: messages,
   newMesssageText: ""
 };
