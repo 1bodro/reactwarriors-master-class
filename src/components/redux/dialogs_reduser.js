@@ -7,23 +7,19 @@ const dialogsReduser = (state = dialogsPage, action) => {
   switch (action.type) {
     case SEND_MESSAGE: {
       let newMessage = {
-        idUser: 1,
+        idUser: 111,
         idMsg: 14,
         text: state.newMesssageText
       };
-      let stateCopy = { ...state };
 
-      stateCopy.newMesssageText = { ...state.newMesssageText };
-      stateCopy.messages = [...state.messages];
-      stateCopy.newMesssageText = "";
-      stateCopy.messages.push(newMessage);
-
-      return stateCopy;
+      return {
+        ...state,
+        messages: [...state.messages, newMessage],
+        newMesssageText: ""
+      };
     }
     case UPDATE_NEW_MESSAGE_TEXT: {
-      let stateCopy = { ...state };
-      stateCopy.newMesssageText = action.newText;
-      return stateCopy;
+      return { ...state, newMesssageText: action.newText };
     }
 
     default:

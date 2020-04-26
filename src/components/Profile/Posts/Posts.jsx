@@ -11,7 +11,12 @@ export const Posts = props => {
   } = props;
 
   const postsElements = posts.map(post => (
-    <Post message={post.text} likesCout={post.likesCout} photo={userPhoto} />
+    <Post
+      key={post.id}
+      message={post.text}
+      likesCout={post.likesCout}
+      photo={userPhoto}
+    />
   ));
 
   let textareaRef = React.createRef();

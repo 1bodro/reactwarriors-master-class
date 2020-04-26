@@ -8,7 +8,7 @@ export const Chats = props => {
   return (
     <div className={`${s.container} customScrollbar`}>
       {chats.map(chat => (
-        <Chat chat={chat} />
+        <Chat key={chat.id} chat={chat} />
       ))}
     </div>
   );

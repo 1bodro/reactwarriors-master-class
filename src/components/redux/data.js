@@ -1,6 +1,6 @@
-
 const posts = [
   {
+    id: 1,
     text: "Hello, Kate, are you coming to my party today?",
     likesCout: 11
   },
@@ -10,25 +10,29 @@ const posts = [
     likesCout: 7
   },
   {
+    id: 3,
     text: "Oh, my God, I completely forgot, sorry, of course, I’ll be there!",
     likesCout: 9
   },
-  { text: "And who else is invited", likesCout: 18 },
+  { id: 4, text: "And who else is invited", likesCout: 18 },
   {
+    id: 5,
     text:
       "Lily, Marry, Jenny – you know them, and a couple of good-looking guys!",
     likesCout: 1
   },
   {
+    id: 6,
     text: "Оh, it ‘ll be fun! What shall I bring with me?",
     likesCout: 7
   },
   {
+    id: 7,
     text:
       "Please, take a few bottles of Cola and some snacks: crisps, for example.",
     likesCout: 4
   }
-]
+];
 
 const chats = [
   {
@@ -78,23 +82,23 @@ const chats = [
 const messages = [
   {
     idUser: 12,
-    idMsg: 135,
+    idMsg: 13015,
     text: "Hello, Kate, are you coming to my party today?"
   },
-  { idUser: 1, idMsg: 15, text: "Hello, on what occasion is the party?" },
+  { idUser: 111, idMsg: 15, text: "Hello, on what occasion is the party?" },
   {
     idUser: 12,
     idMsg: 135,
     text: "On the occasion of my arrival from Spain."
   },
   {
-    idUser: 1,
+    idUser: 111,
     idMsg: 14,
     text: "Oh, my God, I completely forgot, sorry, of course, I’ll be there!"
   },
   { idUser: 12, idMsg: 1305, text: "And who else is invited" },
   {
-    idUser: 1,
+    idUser: 111,
     idMsg: 175,
     text:
       "Lily, Marry, Jenny – you know them, and a couple of good-looking guys!"
@@ -105,7 +109,7 @@ const messages = [
     text: "Оh, it ‘ll be fun! What shall I bring with me?"
   },
   {
-    idUser: 1,
+    idUser: 111,
     idMsg: 12345,
     text:
       "Please, take a few bottles of Cola and some snacks: crisps, for example."
@@ -123,12 +127,10 @@ export const profilePage = {
   newPostText: ""
 };
 
-export const sidebar ={
-
-}
+export const sidebar = {};
 
 export const user = {
-  id: 1,
+  id: 111,
   name: "Andrew",
   desc: "Description",
   photo:

@@ -11,13 +11,13 @@ export const Messages = props => {
     updateMessage(e.target.value);
   };
   const onSendMessage = () => {
-    sendMessage(); 
+    sendMessage();
   };
   return (
     <div className={s.container}>
       <div className={`${s.listMessages} customScrollbar`}>
         {messages.map(message => (
-          <Message message={message} user={user} />
+          <Message key={message.idMsg} message={message} user={user} />
         ))}
       </div>
       <div className={s.writeMessages} ref={testRef}>
