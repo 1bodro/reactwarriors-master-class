@@ -40,9 +40,9 @@ const findUsersReduser = (state = findUsersPage, action) => {
   }
 };
 
-export const loadUsersAC = users => ({ type: LOAD_USERS, users });
-export const setUsersAC = users => ({ type: SET_USERS, users });
-export const followAC = userId => ({ type: FOLLOW, userId });
-export const unFollowAC = userId => ({ type: UNFOLLOW, userId });
+export const loadUsersAC = users => ({ type: LOAD_USERS, users: users });
+export const setUsersAC = users => ({ type: SET_USERS, users: users });
+export const followAC = userId => ({ type: FOLLOW, userId: userId });
+export const unFollowAC = userId => ({ type: UNFOLLOW, userId: userId });
 
 export default findUsersReduser;

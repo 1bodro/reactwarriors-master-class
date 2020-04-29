@@ -116,7 +116,7 @@ const messages = [
   }
 ];
 
-const users = [
+export const users = [
   {
     id: 1,
     fullName: "Oleg",
@@ -230,7 +230,7 @@ export const dialogsPage = {
 };
 
 export const findUsersPage = {
-  users: users
+  users: []
 };
 
 export const profilePage = {
