@@ -3,11 +3,13 @@ import { Avatar } from "../../Avatar/Avatar";
 import s from "./User.module.scss";
 
 export const User = props => {
+let defaultStatus ="Nothing is more silly than silly laughter";
   const {
-    user: { id, fullName, status, photo, location, followed },
+    user: { id, name, status, photos: {small: photo}, location = {country:'Earth',city: 'Earth' }, followed },
     follow,
     unFollow
   } = props;
+
   return (
     <div className={`${s.container}`}>
       <div className={`${s.follow}`}>
@@ -32,8 +34,8 @@ export const User = props => {
       </div>
       <div className={`${s.info}`}>
         <div className={`${s.info__desc}`}>
-          <span className={s.info__name}>{fullName}</span>
-          <p className={s.info__status}>{status}</p>
+          <span className={s.info__name}>{name}</span>
+          <p className={s.info__status}>{status||defaultStatus}</p>
         </div>
         <div className={`${s.info__location}`}>
           <span>{location.country}</span>
