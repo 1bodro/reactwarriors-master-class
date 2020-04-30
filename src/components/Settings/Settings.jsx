@@ -1,7 +1,6 @@
 import React from "react";
-import s from "./Settings.module.scss";
 
-export const Settings = props => {
+export const Settings = () => {
   return (
     <>
       <span>Settings</span>

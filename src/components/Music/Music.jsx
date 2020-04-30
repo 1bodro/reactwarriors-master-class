@@ -1,7 +1,6 @@
 import React from "react";
-import s from "./Music.module.scss";
 
-export const Music = props => {
+export const Music = () => {
   return (
     <>
       <span>Music</span>
