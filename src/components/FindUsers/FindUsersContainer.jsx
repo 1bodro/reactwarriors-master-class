@@ -1,4 +1,4 @@
-import { FindUsers } from "./FindUsers";
+import FindUsers from "./FindUsers";
 import { setUsersAC, followAC, unFollowAC } from "../redux/find_users_reduser";
 import { connect } from "react-redux";
 
