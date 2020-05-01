@@ -1,7 +1,7 @@
 import { user } from "./data";
 
-const userReduser = (state = user, action) => {
+const userReducer = (state = user, action) => {
   return state;
 };
 
-export default userReduser;
+export default userReducer;

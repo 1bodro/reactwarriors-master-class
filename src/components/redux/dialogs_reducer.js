@@ -3,7 +3,7 @@ import { dialogsPage } from "./data";
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const SEND_MESSAGE = "SEND-MESSAGE";
 
-const dialogsReduser = (state = dialogsPage, action) => {
+const dialogsReducer = (state = dialogsPage, action) => {
   switch (action.type) {
     case SEND_MESSAGE: {
       let newMessage = {
@@ -34,4 +34,4 @@ export const updateMessageTextCreator = text => ({
   newText: text
 });
 
-export default dialogsReduser;
+export default dialogsReducer;
