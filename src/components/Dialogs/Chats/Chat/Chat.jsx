@@ -15,7 +15,7 @@ export const Chat = props => {
         className={s.navLink}
         activeClassName={s.active}
       >
-        <Avatar size="sm" src={photo} />
+        <Avatar size="sm" src={photo} id={id} />
         <span className={s.name}>{name}</span>
       </NavLink>
     </div>

@@ -69,12 +69,12 @@ const findUsersReducer = (state = initialState, action) => {
   }
 };
 
-export const loadUsersAC = users => ({ type: LOAD_USERS, users: users });
-export const setUsersAC = users => ({ type: SET_USERS, users: users });
-export const followAC = userId => ({ type: FOLLOW, userId: userId });
-export const unFollowAC = userId => ({ type: UNFOLLOW, userId: userId });
-export const setCurrentPageAC = currentPage => ({ type: SET_CURRENT_PAGE, currentPage: currentPage });
-export const setUsersTotalCurrentPageAC = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount });
-export const setIsLoadingAC = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
+export const loadUsers = users => ({ type: LOAD_USERS, users: users });
+export const setUsers = users => ({ type: SET_USERS, users: users });
+export const follow = userId => ({ type: FOLLOW, userId: userId });
+export const unFollow = userId => ({ type: UNFOLLOW, userId: userId });
+export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage: currentPage });
+export const setUsersTotalCurrentPage = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount });
+export const setIsLoading = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
 
 export default findUsersReducer;

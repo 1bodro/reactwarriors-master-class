@@ -6,7 +6,6 @@ export const Sidebar = () => {
   return (
     <nav className={s.container}>
       <NavLink
-        exact
         to="/profile"
         className={s.navLink}
         activeClassName={s.active}

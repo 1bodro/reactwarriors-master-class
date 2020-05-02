@@ -35,7 +35,6 @@ class FindUsersAPIComponent extends React.Component {
 
   render() {
     const {users, follow, unFollow, totalUsersCount, pageSize, currentPage , isLoading} = this.props;
-    console.log(isLoading);
     return (
         <FindUsers
             onPageChanged={this.onPageChanged}
@@ -61,6 +60,38 @@ const mapStateToProps = state => {
     isLoading: state.findUsersPage.isLoading
   };
 };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     follow: userId => {
+//       dispatch(followAC(userId));
+//     },
+//     unFollow: userId => {
+//       dispatch(unFollowAC(userId));
+//     },
+//     setUsers: users => {
+//       dispatch(setUsersAC(users));
+//     },
+//     setCurrentPage: currentPage => {
+//       dispatch(setCurrentPageAC(currentPage));
+//     },
+//     setUsersTotalCurrentPage: totalUsersCount => {
+//       dispatch(setUsersTotalCurrentPageAC(totalUsersCount));
+//     },
+//     toggleIsLoading: isLoading => {
+//       dispatch(setIsLoadingAC(isLoading));
+//     }
+//   };
+// };
+
+// const mapDispatchToProps =  {
+//     follow: followAC,
+//     unFollow: unFollowAC,
+//     setUsers: setUsersAC,
+//     setCurrentPage: setCurrentPageAC,
+//     setUsersTotalCurrentPage: setUsersTotalCurrentPageAC,
+//     toggleIsLoading: setIsLoadingAC
+// };
 
 const mapDispatchToProps =  {
   follow,

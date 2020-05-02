@@ -15,6 +15,7 @@ export const Message = props => {
       <Avatar
         size="sm"
         src={user.id === message.idUser ? user.photo : defaultSrc}
+        id={user.id}
       />
       <p className={s.text}>{message.text}</p>
     </div>

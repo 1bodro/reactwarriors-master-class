@@ -13,7 +13,7 @@ let defaultStatus ="Nothing is more silly than silly laughter";
   return (
     <div className={`${s.container}`}>
       <div className={`${s.follow}`}>
-        <Avatar size="lg" src={photo} />
+        <Avatar size="lg" src={photo} id={id} />
         {followed ? (
           <button
             className={`${s.follow__btn} ${s.remove}`}

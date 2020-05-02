@@ -235,7 +235,31 @@ export const findUsersPage = {
 
 export const profilePage = {
   posts: posts,
-  newPostText: ""
+  newPostText: "",
+  profile: {},
+  isLoading: true
+};
+
+export const profile = {
+  "aboutMe": "People rejoice at the Sun, and I'm dreaming of the Moon",
+  "contacts": {
+    "facebook": "facebook.com",
+    "website": null,
+    "vk": "vk.com/dimych",
+    "twitter": "https://twitter.com/@sdf",
+    "instagram": "instagra.com/sds",
+    "youtube": null,
+    "github": "github.com",
+    "mainLink": null
+  },
+  "lookingForAJob": true,
+  "lookingForAJobDescription": "не ищу, а дурачусь",
+  "fullName": "Andrew",
+  "userId": 111,
+  "photos": {
+    "small": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU",
+    "large": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU"
+  }
 };
 
 export const user = {
@@ -243,7 +267,7 @@ export const user = {
   name: "Andrew",
   desc: "Description",
   photo:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTz5DhqhLRNZLqOkCKuyJg5rZ_vCTrFQcUliE-T4TuhP7rAkBWD&usqp=CAU"
 };
 
 export const sidebar = {};
