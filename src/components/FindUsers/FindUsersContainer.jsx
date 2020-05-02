@@ -35,7 +35,6 @@ class FindUsersAPIComponent extends React.Component {
 
   render() {
     const {users, follow, unFollow, totalUsersCount, pageSize, currentPage , isLoading} = this.props;
-    console.log(isLoading);
     return (
         <FindUsers
             onPageChanged={this.onPageChanged}

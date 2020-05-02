@@ -6,13 +6,13 @@ export const Sidebar = () => {
   return (
     <nav className={s.container}>
       <NavLink
-        to="/profile"
+        to='/profile'
         className={s.navLink}
         activeClassName={s.active}
       >
         Profile
       </NavLink>
-      <NavLink to="/messages/" className={s.navLink} activeClassName={s.active}>
+      <NavLink to='/messages/' className={s.navLink} activeClassName={s.active}>
         Messages
       </NavLink>
       <NavLink

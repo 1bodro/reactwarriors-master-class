@@ -7,6 +7,7 @@ import {Preloader} from "../../Preloader/Preloader";
 const defaultSrcBanner = "https://upload.wikimedia.org/wikipedia/commons/9/9f/US_Virgin_Islands_banner_Turtle_Bay_Beach.jpg";
 export const ProfileInfo = props => {
     const {profile, isLoading} = props;
+
     return (
         <div className={s.container}>
             {isLoading

@@ -17,14 +17,14 @@ export default class App extends React.Component {
 
     this.state = {};
   }
-
+    /*   ? => означает, что параметр :userId не обязательный*/
   render() {
     return (
       <div className="app-wrapper">
         <Header />
         <Sidebar />
         <div className="content">
-          <Route path="/profile" render={() => <Profile />} />
+          <Route path="/profile/:userId?" render={() => <Profile />} />
           <Route
             path="/messages"
             render={() => {
