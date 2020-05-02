@@ -1,8 +1,12 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   height: 80px;
   width: 100%;
   max-width: 1280px;
+  padding-right: 24px;
   // grid-area: h;
   background: #fdd949;
   border-radius: 0 0 6px 6px;
@@ -21,5 +25,24 @@
     transform: translateX(-50%);
     width: auto;
     height: 100%;
+  }
+}
+
+.login {
+  padding: 6px 12px;
+  min-width: 100px;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background: rgba(256,256,256,.25);
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 0 #ecbd00;
+  cursor: pointer;
+  &:hover {
+    color: #ffffff;
+    background: #fdd949;
+    outline: none;
+    text-decoration: none;
   }
 }

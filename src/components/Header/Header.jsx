@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss";
 
 export const Header = () => {
@@ -10,6 +11,7 @@ export const Header = () => {
           alt="logo"
         />
       </div>
+        <NavLink to={`/login`} className={s.login}>Login</NavLink>
     </header>
   );
 };

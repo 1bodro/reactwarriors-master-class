@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Route } from "react-router-dom";
-import { Header } from "./Header/Header";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 import { Profile } from "./Profile/Profile";
@@ -10,6 +9,7 @@ import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 import { FindUsersContainer } from "./FindUsers/FindUsersContainer";
+import HeaderContainer from "./Header/HeaderContainer";
 
 export default class App extends React.Component {
   constructor() {
@@ -21,7 +21,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <Sidebar />
         <div className="content">
           <Route path="/profile/:userId?" render={() => <Profile />} />
