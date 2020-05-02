@@ -10,7 +10,13 @@ class FindUsersAPIComponent extends React.Component {
     const { setUsers, pageSize, currentPage,setUsersTotalCurrentPage,setIsLoading } = this.props;
     setIsLoading(true);
     axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
+        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
+            {
+                headers: {
+                    "API-KEY": '00d2fa15-e31d-4426-b266-27f25c4e7bcb'
+                },
+                withCredentials: true
+            })
         .then(response => {
           setUsers(response.data.items);
           setUsersTotalCurrentPage(response.data.totalCount);
@@ -24,7 +30,12 @@ class FindUsersAPIComponent extends React.Component {
     setCurrentPage(currentPage);
     setIsLoading(true);
     axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
+        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,{
+            headers: {
+                "API-KEY": '00d2fa15-e31d-4426-b266-27f25c4e7bcb'
+            },
+            withCredentials: true
+        })
         .then(response => {
           setIsLoading(false);
               setUsers(response.data.items)
@@ -40,8 +51,8 @@ class FindUsersAPIComponent extends React.Component {
             onPageChanged={this.onPageChanged}
             totalUsersCount={totalUsersCount}
             users={users}
-            follow={ follow}
-            unFollow={ unFollow}
+            follow={follow}
+            unFollow={unFollow}
             pageSize={pageSize}
             currentPage={currentPage}
             isLoading={isLoading}
