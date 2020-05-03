@@ -1,33 +1,33 @@
 import React from "react";
 import { Avatar } from "../../Avatar/Avatar";
 import s from "./User.module.scss";
-import * as axios from "axios";
+import {usersAPI} from "../../../api/users";
 
 export const User = props => {
 let defaultStatus ="Nothing is more silly than silly laughter";
   const {
-    user: { id, name, status, photos: {small: photo}, location = {country:'Earth',city: 'Earth' }, followed },
+    user: { id: userId, name, status, photos: {small: photo}, location = {country:'Earth',city: 'Earth' }, followed },
     follow,
-    unFollow
+    unFollow,
+    toggleFollowingInProgress,
+    followingInProgress
   } = props;
 
   return (
     <div className={`${s.container}`}>
       <div className={`${s.follow}`}>
-        <Avatar size="lg" src={photo} id={id} />
+        <Avatar size="lg" src={photo} id={userId} />
         {followed ? (
             <button
                 className={`${s.follow__btn} ${s.remove}`}
+                disabled={followingInProgress.some( id => id === userId)}
                 onClick={() => {
-                  axios
-                      .delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,
-                          {
-                            headers: {
-                              "API-KEY": '00d2fa15-e31d-4426-b266-27f25c4e7bcb'
-                            },
-                            withCredentials: true
-                          })
-                      .then(response => (response.data.resultCode ===0) && unFollow(id))
+                  toggleFollowingInProgress(true, userId);
+                  usersAPI.unFollowUser(userId)
+                      .then(response => {
+                        (response.resultCode ===0) && unFollow(userId);
+                        toggleFollowingInProgress(false, userId);
+                      })
                       .catch(error => console.log(error));
                 }}
             >
@@ -36,16 +36,14 @@ let defaultStatus ="Nothing is more silly than silly laughter";
         ) : (
             <button
                 className={`${s.follow__btn} ${s.add}`}
+                disabled={followingInProgress.some( id => id === userId)}
                 onClick={() => {
-                  axios
-                      .post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`,{},
-                          {
-                            headers: {
-                              "API-KEY": '00d2fa15-e31d-4426-b266-27f25c4e7bcb'
-                            },
-                            withCredentials: true
-                          })
-                      .then(response => (response.data.resultCode ===0) && follow(id))
+                  toggleFollowingInProgress(true, userId);
+                  usersAPI.followUser(userId)
+                      .then(response => {
+                        (response.resultCode ===0) && follow(userId);
+                        toggleFollowingInProgress(false, userId);
+                      })
                       .catch(error => console.log(error));
                 }}
             >

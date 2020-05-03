@@ -39,14 +39,21 @@
     }
   }
 
-&.remove {
-  color:  #ff1c2e;
-  &:hover {
-    background: #ff1c2e;
-    color: #ffffff;
-    outline: none;
+  &.remove {
+    color: #ff1c2e;
+
+    &:hover {
+      background: #ff1c2e;
+      color: #ffffff;
+      outline: none;
+    }
   }
-}
+
+  &:disabled {
+    background: rgba(128, 128, 128, 0.3);
+    color: #565656;
+    pointer-events: none;
+  }
 
   &:active,
   &:focus {

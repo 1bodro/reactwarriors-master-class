@@ -1,25 +1,18 @@
 import {FindUsers} from "./FindUsers";
-import { setUsers, follow, unFollow,setCurrentPage, setUsersTotalCurrentPage, setIsLoading } from "../redux/find_users_reducer";
+import { setUsers, follow, unFollow,setCurrentPage, setUsersTotalCurrentPage, setIsLoading, toggleFollowingInProgress } from "../redux/find_users_reducer";
 import { connect } from "react-redux";
 import React from "react";
-import * as axios from "axios";
+import {usersAPI} from "../../api/users";
 
 class FindUsersAPIComponent extends React.Component {
 
   componentDidMount() {
     const { setUsers, pageSize, currentPage,setUsersTotalCurrentPage,setIsLoading } = this.props;
     setIsLoading(true);
-    axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,
-            {
-                headers: {
-                    "API-KEY": '00d2fa15-e31d-4426-b266-27f25c4e7bcb'
-                },
-                withCredentials: true
-            })
+      usersAPI.getUsers(currentPage, pageSize)
         .then(response => {
-          setUsers(response.data.items);
-          setUsersTotalCurrentPage(response.data.totalCount);
+          setUsers(response.items);
+          setUsersTotalCurrentPage(response.totalCount);
           setIsLoading(false);
         })
         .catch(error => console.log(error));
@@ -29,23 +22,17 @@ class FindUsersAPIComponent extends React.Component {
     const {setCurrentPage, pageSize,setUsers, setIsLoading} = this.props;
     setCurrentPage(currentPage);
     setIsLoading(true);
-    axios
-        .get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`,{
-            headers: {
-                "API-KEY": '00d2fa15-e31d-4426-b266-27f25c4e7bcb'
-            },
-            withCredentials: true
-        })
+    usersAPI.getUsers(currentPage, pageSize)
         .then(response => {
           setIsLoading(false);
-              setUsers(response.data.items)
+              setUsers(response.items)
             }
         )
         .catch(error => console.log(error));
   }
 
   render() {
-    const {users, follow, unFollow, totalUsersCount, pageSize, currentPage , isLoading} = this.props;
+    const {users, follow, unFollow, totalUsersCount, pageSize, currentPage , isLoading, followingInProgress, toggleFollowingInProgress} = this.props;
     return (
         <FindUsers
             onPageChanged={this.onPageChanged}
@@ -56,6 +43,8 @@ class FindUsersAPIComponent extends React.Component {
             pageSize={pageSize}
             currentPage={currentPage}
             isLoading={isLoading}
+            followingInProgress={followingInProgress}
+            toggleFollowingInProgress={toggleFollowingInProgress}
         />
     )
   }
@@ -68,7 +57,8 @@ const mapStateToProps = state => {
     pageSize: state.findUsersPage.pageSize,
     totalUsersCount: state.findUsersPage.totalUsersCount,
     currentPage: state.findUsersPage.currentPage,
-    isLoading: state.findUsersPage.isLoading
+    isLoading: state.findUsersPage.isLoading,
+    followingInProgress: state.findUsersPage.followingInProgress,
   };
 };
 
@@ -78,7 +68,8 @@ const mapDispatchToProps =  {
   setUsers,
   setCurrentPage,
   setUsersTotalCurrentPage,
-  setIsLoading
+  setIsLoading,
+  toggleFollowingInProgress
 };
 
 export const FindUsersContainer = connect(
