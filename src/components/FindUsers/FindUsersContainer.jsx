@@ -1,5 +1,5 @@
 import {FindUsers} from "./FindUsers";
-import { setUsers, follow, unFollow,setCurrentPage, setUsersTotalCurrentPage, setIsLoading, toggleFollowingInProgress } from "../redux/find_users_reducer";
+import { setUsers, follow, unFollow,setCurrentPage, setUsersTotalCurrentPage, setIsLoading, toggleFollowingInProgress, getUsersThunkCreator } from "../redux/find_users_reducer";
 import { connect } from "react-redux";
 import React from "react";
 import {usersAPI} from "../../api/users";
@@ -69,7 +69,8 @@ const mapDispatchToProps =  {
   setCurrentPage,
   setUsersTotalCurrentPage,
   setIsLoading,
-  toggleFollowingInProgress
+  toggleFollowingInProgress,
+  getUsersThunkCreator
 };
 
 export const FindUsersContainer = connect(

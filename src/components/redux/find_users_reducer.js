@@ -1,4 +1,5 @@
 // import { findUsersPage } from "./data";
+import {usersAPI} from "../../api/users";
 
 const LOAD_USERS = "LOAD-USERS";
 const SET_USERS = "SET-USERS";
@@ -45,7 +46,7 @@ const findUsersReducer = (state = initialState, action) => {
       };
     }
     case TOGGLE_IS_FOLLOWING: {
-      
+
       return {
         ...state, followingInProgress : action.isFollowing
             ? [...state.followingInProgress, action.userId]
@@ -87,5 +88,29 @@ export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentP
 export const setUsersTotalCurrentPage = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount });
 export const setIsLoading = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
 export const toggleFollowingInProgress = (isFollowing, userId) => ({type: TOGGLE_IS_FOLLOWING, isFollowing: isFollowing, userId: userId });
+
+export const getUsersThunkCreator = (currentPage, pageSize) => dispatch => {
+  dispatch(setIsLoading(true));
+  usersAPI.getUsers(currentPage, pageSize)
+      .then(response => {
+        dispatch(setUsers(response.items));
+        dispatch(setUsersTotalCurrentPage(response.totalCount));
+        dispatch(setIsLoading(false));
+      })
+      .catch(error => console.log(error));
+}
+
+// export const getUsersThunkCreator = (currentPage, pageSize) => {
+//   return dispatch => {
+//     dispatch(setIsLoading(true));
+//     usersAPI.getUsers(currentPage, pageSize)
+//         .then(response => {
+//           dispatch(setUsers(response.items));
+//           dispatch(setUsersTotalCurrentPage(response.totalCount));
+//           dispatch(setIsLoading(false));
+//         })
+//         .catch(error => console.log(error));
+//   }
+// }
 
 export default findUsersReducer;

@@ -10,7 +10,8 @@ let defaultStatus ="Nothing is more silly than silly laughter";
     follow,
     unFollow,
     toggleFollowingInProgress,
-    followingInProgress
+    followingInProgress,
+    getUsersThunkCreator
   } = props;
 
   return (
@@ -22,6 +23,7 @@ let defaultStatus ="Nothing is more silly than silly laughter";
                 className={`${s.follow__btn} ${s.remove}`}
                 disabled={followingInProgress.some( id => id === userId)}
                 onClick={() => {
+                  getUsersThunkCreator();
                   toggleFollowingInProgress(true, userId);
                   usersAPI.unFollowUser(userId)
                       .then(response => {
