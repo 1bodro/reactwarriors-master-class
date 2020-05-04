@@ -1,50 +1,44 @@
 import {FindUsers} from "./FindUsers";
-import { setUsers, follow, unFollow,setCurrentPage, setUsersTotalCurrentPage, setIsLoading, toggleFollowingInProgress, getUsersThunkCreator } from "../redux/find_users_reducer";
+import { toggleFollowingInProgress, getUsersThunkCreator,toggleFollowing } from "../redux/find_users_reducer";
 import { connect } from "react-redux";
 import React from "react";
-import {usersAPI} from "../../api/users";
+
 
 class FindUsersAPIComponent extends React.Component {
 
   componentDidMount() {
-    const { setUsers, pageSize, currentPage,setUsersTotalCurrentPage,setIsLoading } = this.props;
-    setIsLoading(true);
-      usersAPI.getUsers(currentPage, pageSize)
-        .then(response => {
-          setUsers(response.items);
-          setUsersTotalCurrentPage(response.totalCount);
-          setIsLoading(false);
-        })
-        .catch(error => console.log(error));
+    const { pageSize, currentPage, getUsers } = this.props;
+    getUsers(currentPage, pageSize);
   }
 
   onPageChanged = currentPage => {
-    const {setCurrentPage, pageSize,setUsers, setIsLoading} = this.props;
-    setCurrentPage(currentPage);
-    setIsLoading(true);
-    usersAPI.getUsers(currentPage, pageSize)
-        .then(response => {
-          setIsLoading(false);
-              setUsers(response.items)
-            }
-        )
-        .catch(error => console.log(error));
+    const { pageSize, getUsers} = this.props;
+    getUsers(currentPage, pageSize);
+    // before thunks
+    // setCurrentPage(currentPage);
+    // setIsLoading(true);
+    // usersAPI.getUsers(currentPage, pageSize)
+    //     .then(response => {
+    //       setIsLoading(false);
+    //           setUsers(response.items)
+    //         }
+    //     )
+    //     .catch(error => console.log(error));
   }
 
   render() {
-    const {users, follow, unFollow, totalUsersCount, pageSize, currentPage , isLoading, followingInProgress, toggleFollowingInProgress} = this.props;
+    const {users, totalUsersCount, pageSize, currentPage , isLoading, followingInProgress, toggleFollowingInProgress,toggleFollowing } = this.props;
     return (
         <FindUsers
             onPageChanged={this.onPageChanged}
             totalUsersCount={totalUsersCount}
             users={users}
-            follow={follow}
-            unFollow={unFollow}
             pageSize={pageSize}
             currentPage={currentPage}
             isLoading={isLoading}
             followingInProgress={followingInProgress}
             toggleFollowingInProgress={toggleFollowingInProgress}
+            toggleFollowing={toggleFollowing}
         />
     )
   }
@@ -63,14 +57,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps =  {
-  follow,
-  unFollow,
-  setUsers,
-  setCurrentPage,
-  setUsersTotalCurrentPage,
-  setIsLoading,
+  toggleFollowing,
   toggleFollowingInProgress,
-  getUsersThunkCreator
+  getUsers: getUsersThunkCreator
 };
 
 export const FindUsersContainer = connect(

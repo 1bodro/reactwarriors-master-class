@@ -1,17 +1,14 @@
 import React from "react";
 import { Avatar } from "../../Avatar/Avatar";
 import s from "./User.module.scss";
-import {usersAPI} from "../../../api/users";
 
 export const User = props => {
 let defaultStatus ="Nothing is more silly than silly laughter";
   const {
     user: { id: userId, name, status, photos: {small: photo}, location = {country:'Earth',city: 'Earth' }, followed },
-    follow,
-    unFollow,
     toggleFollowingInProgress,
     followingInProgress,
-    getUsersThunkCreator
+    toggleFollowing
   } = props;
 
   return (
@@ -23,14 +20,14 @@ let defaultStatus ="Nothing is more silly than silly laughter";
                 className={`${s.follow__btn} ${s.remove}`}
                 disabled={followingInProgress.some( id => id === userId)}
                 onClick={() => {
-                  getUsersThunkCreator();
-                  toggleFollowingInProgress(true, userId);
-                  usersAPI.unFollowUser(userId)
-                      .then(response => {
-                        (response.resultCode ===0) && unFollow(userId);
-                        toggleFollowingInProgress(false, userId);
-                      })
-                      .catch(error => console.log(error));
+                  toggleFollowing(userId, false);
+                  // toggleFollowingInProgress(true, userId);
+                  // usersAPI.unFollowUser(userId)
+                  //     .then(response => {
+                  //       (response.resultCode ===0) && unFollow(userId);
+                  //       toggleFollowingInProgress(false, userId);
+                  //     })
+                  //     .catch(error => console.log(error));
                 }}
             >
               Unfollow
@@ -40,13 +37,14 @@ let defaultStatus ="Nothing is more silly than silly laughter";
                 className={`${s.follow__btn} ${s.add}`}
                 disabled={followingInProgress.some( id => id === userId)}
                 onClick={() => {
-                  toggleFollowingInProgress(true, userId);
-                  usersAPI.followUser(userId)
-                      .then(response => {
-                        (response.resultCode ===0) && follow(userId);
-                        toggleFollowingInProgress(false, userId);
-                      })
-                      .catch(error => console.log(error));
+                  toggleFollowing(userId, true);
+                  // toggleFollowingInProgress(true, userId);
+                  // usersAPI.followUser(userId)
+                  //     .then(response => {
+                  //       (response.resultCode ===0) && follow(userId);
+                  //       toggleFollowingInProgress(false, userId);
+                  //     })
+                  //     .catch(error => console.log(error));
                 }}
             >
               Follow

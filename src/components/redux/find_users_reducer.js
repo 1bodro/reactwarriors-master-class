@@ -82,8 +82,8 @@ const findUsersReducer = (state = initialState, action) => {
 
 export const loadUsers = users => ({ type: LOAD_USERS, users: users });
 export const setUsers = users => ({ type: SET_USERS, users: users });
-export const follow = userId => ({ type: FOLLOW, userId: userId });
-export const unFollow = userId => ({ type: UNFOLLOW, userId: userId });
+export const followSuccess = userId => ({ type: FOLLOW, userId: userId });
+export const unFollowSuccess = userId => ({ type: UNFOLLOW, userId: userId });
 export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage: currentPage });
 export const setUsersTotalCurrentPage = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount });
 export const setIsLoading = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
@@ -91,6 +91,7 @@ export const toggleFollowingInProgress = (isFollowing, userId) => ({type: TOGGLE
 
 export const getUsersThunkCreator = (currentPage, pageSize) => dispatch => {
   dispatch(setIsLoading(true));
+  dispatch(setCurrentPage(currentPage));
   usersAPI.getUsers(currentPage, pageSize)
       .then(response => {
         dispatch(setUsers(response.items));
@@ -98,6 +99,26 @@ export const getUsersThunkCreator = (currentPage, pageSize) => dispatch => {
         dispatch(setIsLoading(false));
       })
       .catch(error => console.log(error));
+}
+
+export const toggleFollowing = (userId, follow=false) => dispatch => {
+  dispatch(toggleFollowingInProgress(true, userId));
+  const usersAPIRequest = follow
+  ? usersAPI.followUser
+  : usersAPI.unFollowUser;
+
+  const followState = follow
+  ? followSuccess
+  : unFollowSuccess;
+// console.log('usersAPIRequest',usersAPIRequest );
+// console.log('usersAPIRequest',followState );
+
+    usersAPIRequest(userId)
+        .then(response => {
+          (response.resultCode ===0) && dispatch(followState(userId));
+          dispatch(toggleFollowingInProgress(false, userId));
+        })
+        .catch(error => console.log(error));
 }
 
 // export const getUsersThunkCreator = (currentPage, pageSize) => {
