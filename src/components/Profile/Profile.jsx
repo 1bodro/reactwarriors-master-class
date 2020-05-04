@@ -1,14 +1,10 @@
 import React from "react";
 import { PostsContainer } from "./Posts/PostsContainer";
-
 import { ProfileInfoContainer } from "./ProfileInfo/ProfileInfoContainer";
-
 import s from "./Profile.module.scss";
+import {AuthRedirectComponent} from "../../hoc/withAuthRedirect";
 
-export const Profile = props => {
-  // const { store } = props;
-  // const { user } = store.getState();
-
+const Profile = () => {
   return (
     <div className={s.container}>
       <ProfileInfoContainer />
@@ -16,3 +12,5 @@ export const Profile = props => {
     </div>
   );
 };
+
+export default AuthRedirectComponent(Profile);

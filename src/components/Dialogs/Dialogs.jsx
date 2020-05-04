@@ -2,12 +2,14 @@ import React from "react";
 import { ChatsContainer } from "./Chats/ChatsContainer";
 import { MessagesContainer } from "./Messages/MessagesContainer";
 import s from "./Dialogs.module.scss";
+import {AuthRedirectComponent} from "../../hoc/withAuthRedirect";
 
-export const Dialogs = () => {
+const Dialogs = () => {
   // const { store } = props;
   // const {
   //   dialogsPage: { dialogs }
   // } = store.getState();
+
 
   return (
     <div className={s.container}>
@@ -16,3 +18,5 @@ export const Dialogs = () => {
     </div>
   );
 };
+
+export default AuthRedirectComponent(Dialogs);

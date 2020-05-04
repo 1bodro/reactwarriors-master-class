@@ -3,13 +3,14 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Sidebar } from "./Sidebar/Sidebar";
 
-import { Profile } from "./Profile/Profile";
-import { Dialogs } from "./Dialogs/Dialogs";
+import Profile from "./Profile/Profile";
+import Dialogs from "./Dialogs/Dialogs";
 import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 import { FindUsersContainer } from "./FindUsers/FindUsersContainer";
 import HeaderContainer from "./Header/HeaderContainer";
+import {Login} from "./Login/Login";
 
 export default class App extends React.Component {
   constructor() {
@@ -27,9 +28,7 @@ export default class App extends React.Component {
           <Route path="/profile/:userId?" render={() => <Profile />} />
           <Route
             path="/messages"
-            render={() => {
-              return <Dialogs />;
-            }}
+            render={() => <Dialogs />}
           />
           <Route
             path="/users"
@@ -40,6 +39,7 @@ export default class App extends React.Component {
           <Route path="/music" render={() => <Music />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/settings" render={() => <Settings />} />
+          <Route path="/login" render={() => <Login />} />
         </div>
       </div>
     );

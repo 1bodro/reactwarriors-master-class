@@ -6,7 +6,6 @@ export const User = props => {
 let defaultStatus ="Nothing is more silly than silly laughter";
   const {
     user: { id: userId, name, status, photos: {small: photo}, location = {country:'Earth',city: 'Earth' }, followed },
-    toggleFollowingInProgress,
     followingInProgress,
     toggleFollowing
   } = props;

@@ -1,4 +1,5 @@
 import { profilePage } from "./data";
+import {usersAPI} from "../../api/users";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -48,5 +49,15 @@ export const setUserProfile = profile => ({
   profile: profile
 });
 export const setIsLoading = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
+
+export const getProfile = (userId) => dispatch => {
+  dispatch(setIsLoading(true));
+  usersAPI.getProfile(userId)
+      .then(response => {
+        dispatch(setUserProfile(response.data));
+        dispatch(setIsLoading(false));
+      })
+      .catch(error => console.log(error));
+}
 
 export default profileReducer;
