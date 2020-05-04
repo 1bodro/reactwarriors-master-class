@@ -8,7 +8,7 @@ import Dialogs from "./Dialogs/Dialogs";
 import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
-import { FindUsersContainer } from "./FindUsers/FindUsersContainer";
+import FindUsersContainer from "./FindUsers/FindUsersContainer";
 import HeaderContainer from "./Header/HeaderContainer";
 import {Login} from "./Login/Login";
 

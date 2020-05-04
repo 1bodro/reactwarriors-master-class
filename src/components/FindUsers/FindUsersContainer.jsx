@@ -2,6 +2,8 @@ import {FindUsers} from "./FindUsers";
 import { toggleFollowingInProgress, getUsersThunkCreator,toggleFollowing } from "../redux/find_users_reducer";
 import { connect } from "react-redux";
 import React from "react";
+import {AuthRedirectComponent} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class FindUsersAPIComponent extends React.Component {
@@ -62,7 +64,12 @@ const mapDispatchToProps =  {
   getUsers: getUsersThunkCreator
 };
 
-export const FindUsersContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FindUsersAPIComponent);
+// export const FindUsersContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(FindUsersAPIComponent);
+
+
+export default compose (
+    connect(mapStateToProps, mapDispatchToProps),
+    AuthRedirectComponent)(FindUsersAPIComponent);
