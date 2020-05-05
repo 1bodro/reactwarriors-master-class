@@ -2,6 +2,7 @@ import React from "react";
 import {Avatar} from "../../Avatar/Avatar";
 import s from "./ProfileInfo.module.scss";
 import {Preloader} from "../../Preloader/Preloader";
+import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 
 
 const defaultSrcBanner = "https://upload.wikimedia.org/wikipedia/commons/9/9f/US_Virgin_Islands_banner_Turtle_Bay_Beach.jpg";
@@ -25,7 +26,7 @@ export const ProfileInfo = props => {
                         <Avatar size="lg" src={profile.photos.large} id={profile.userId}/>
                         <div className={s.desc}>
                             <div>{profile.fullName}</div>
-                            <div>{profile.aboutMe}</div>
+                            <ProfileStatus status={profile.aboutMe}/>
                         </div>
                     </div>
                 </>}
