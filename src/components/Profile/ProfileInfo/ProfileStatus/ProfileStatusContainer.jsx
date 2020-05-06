@@ -14,6 +14,14 @@ class ProfileStatusContainerAPI extends React.Component {
     this.onStatusChange = this.onStatusChange.bind(this);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      })
+    }
+  }
+
   // statusInputRef = React.createRef();
 
   state = {
@@ -44,7 +52,7 @@ class ProfileStatusContainerAPI extends React.Component {
   render() {
     return (
         <ProfileStatus
-            status={this.props.status}
+            status={this.state.status}
             editMode={this.state.editMode}
             activateEditMode={this.activateEditMode}
             deactivateEditMode={this.deactivateEditMode}
