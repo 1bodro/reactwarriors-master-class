@@ -1,16 +1,20 @@
 import instance from "./"
 
-export const profileAPI = {
+const profileAPI = {
     getProfile(userId) {
         return instance
             .get(`profile/${userId}`);
     },
     getStatus(userId) {
         return instance
-            .get(`status/${userId}`)
+            .get(`profile/status/${userId}`)
+            .then(response => response.data)
     },
-    updateStatus(userId,status) {
+    updateStatus(status) {
         return instance
-            .put(`status`, {status: status})
+            .put(`profile/status`, {status: status})
+            .then(response => response.data)
     }
 }
+
+export default profileAPI;

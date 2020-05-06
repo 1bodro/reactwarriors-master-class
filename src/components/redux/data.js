@@ -236,8 +236,9 @@ export const findUsersPage = {
 export const profilePage = {
   posts: posts,
   newPostText: "",
-  profile: {},
-  isLoading: true
+  profile: null,
+  isLoading: true,
+  status: ""
 };
 
 export const profile = {
