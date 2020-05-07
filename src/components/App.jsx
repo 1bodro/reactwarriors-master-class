@@ -10,7 +10,7 @@ import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 import FindUsersContainer from "./FindUsers/FindUsersContainer";
 import HeaderContainer from "./Header/HeaderContainer";
-import {Login} from "./Login/Login";
+import {LoginContainer} from "./Login/LoginContainer";
 
 export default class App extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ export default class App extends React.Component {
           <Route path="/music" render={() => <Music />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={() => <Login />} />
+          <Route path="/login" render={() => <LoginContainer />} />
         </div>
       </div>
     );
