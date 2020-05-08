@@ -225,8 +225,7 @@ export const users = [
 
 export const dialogsPage = {
   chats: chats,
-  messages: messages,
-  newMesssageText: ""
+  messages: messages
 };
 
 export const findUsersPage = {
@@ -235,7 +234,6 @@ export const findUsersPage = {
 
 export const profilePage = {
   posts: posts,
-  newPostText: "",
   profile: null,
   isLoading: true,
   status: ""

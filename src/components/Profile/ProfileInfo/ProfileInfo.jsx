@@ -22,7 +22,7 @@ export const ProfileInfo = props => {
                         </div>
                     </div>
                     <div className={s.info}>
-                        <Avatar size="lg" src={profile.photos.large} id={profile.userId}/>
+                        <Avatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId}/>
                         <div className={s.desc}>
                             <div>{profile.fullName}</div>
                             <ProfileStatusContainer />

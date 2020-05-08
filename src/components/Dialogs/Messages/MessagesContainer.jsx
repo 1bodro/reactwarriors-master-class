@@ -1,27 +1,20 @@
 import { Messages } from "./Messages";
-import {
-  sendMessageCreator,
-  updateMessageTextCreator
-} from "../../redux/dialogs_reducer";
+import {sendMessageCreator} from "../../redux/dialogs_reducer";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
     messages: state.dialogsPage.messages,
-    newMesssageText: state.dialogsPage.newMesssageText,
     user: state.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateMessage: newText => {
-      dispatch(updateMessageTextCreator(newText));
-    },
-    sendMessage: () => {
-      dispatch(sendMessageCreator());
+    sendMessage: newMessageText => {
+      dispatch(sendMessageCreator(newMessageText));
     }
-  };
+  }
 };
 
 export const MessagesContainer = connect(

@@ -1,25 +1,18 @@
 import { Posts } from "./Posts";
-import {
-  addPostCreator,
-  updatePostTextCreator
-} from "../../redux/profile_reducer";
+import {addPostCreator} from "../../redux/profile_reducer";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
     userPhoto: state.user.photo,
-    profilePage: state.profilePage
+    posts: state.profilePage.posts
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    sendPost: () => {
-      dispatch(addPostCreator());
-    },
-
-    updatePost: text => {
-      dispatch(updatePostTextCreator(text));
+    sendPost: newPostText => {
+      dispatch(addPostCreator(newPostText));
     }
   };
 };

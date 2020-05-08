@@ -23,7 +23,8 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_ID: {
             return {
                 ...state,
-                userId: action.userId
+                userId: action.userId,
+                isAuth: true
             }
         }
         default:
@@ -32,7 +33,7 @@ const authReducer = (state = initialState, action) => {
 };
 
 export const setAuthUserData = data => ({type:SET_USER_DATA, data: data });
-export const setUserId = userId => ({type:SET_USER_DATA, userId: userId });
+export const setUserId = userId => ({type:SET_USER_ID, userId: userId });
 
 export const getAuthUserData = () => dispatch => {
     authAPI.me()
@@ -42,9 +43,12 @@ export const getAuthUserData = () => dispatch => {
         .catch(error => console.log(error));
 }
 
-export const setLoginUser = () => dispatch => {
-    authAPI.login()
+export const setLoginUser = data => dispatch => {
+    authAPI.login(data)
         .then(response => {
+            console.log(response);
+            console.log(response.data.userId);
+            console.log('response.resultCode === 0', response.resultCode === 0);
             (response.resultCode === 0) && dispatch(setUserId(response.data.userId));
         })
         .catch(error => console.log(error));
