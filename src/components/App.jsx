@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Route } from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 import Profile from "./Profile/Profile";
@@ -11,17 +11,26 @@ import { Settings } from "./Settings/Settings";
 import FindUsersContainer from "./FindUsers/FindUsersContainer";
 import HeaderContainer from "./Header/HeaderContainer";
 import LoginContainer from "./Login/LoginContainer";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {initializeApp} from "./redux/app_reducer";
+import {Preloader} from "./Preloader/Preloader";
 
-export default class App extends React.Component {
-  constructor() {
-    super();
-
+class App extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {};
   }
+    componentDidMount() {
+        this.props.initializeApp();
+    }
+
     /*   ? => означает, что параметр :userId не обязательный */
     /*   :userId =>  параметр id  юзера */
   render() {
-    return (
+     return (!this.props.initialized)
+      ? <Preloader />
+      : (
       <div className="app-wrapper">
         <HeaderContainer />
         <Sidebar />
@@ -46,3 +55,16 @@ export default class App extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+    return {
+        initialized: state.app.initialized
+    }
+};
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, {initializeApp})
+)(App);
+
+// без  withRouter не корректно работают  Route
