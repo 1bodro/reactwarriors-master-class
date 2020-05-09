@@ -4,6 +4,14 @@ import { connect } from "react-redux";
 import React from "react";
 import {AuthRedirectComponent} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsLoading,
+  getPageSize,
+  getTotalUsersCount,
+  getUsers
+} from "../redux/user-selectors";
 
 
 class FindUsersAPIComponent extends React.Component {
@@ -49,12 +57,12 @@ class FindUsersAPIComponent extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.findUsersPage.users,
-    pageSize: state.findUsersPage.pageSize,
-    totalUsersCount: state.findUsersPage.totalUsersCount,
-    currentPage: state.findUsersPage.currentPage,
-    isLoading: state.findUsersPage.isLoading,
-    followingInProgress: state.findUsersPage.followingInProgress,
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isLoading: getIsLoading(state),
+    followingInProgress: getFollowingInProgress(state)
   };
 };
 
