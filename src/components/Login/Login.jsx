@@ -4,7 +4,6 @@ import {Field, reduxForm} from "redux-form"
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
-
 const LoginForm = props => {
     if (props.isAuth) {
         return <Redirect to={"/profile"} />
@@ -14,6 +13,7 @@ const LoginForm = props => {
       <div className={s.container}>
           <span>LOGIN</span>
         <form onSubmit={props.handleSubmit}>
+            {props.error && <div className={s.summaryError}>{props.error}</div>}
             <div className=""><Field type= "text" placeholder="login" name="email" component={Input} validate={[required]} /></div>
             <div className=""><Field type="text" placeholder="Password" name="password" component={Input} validate={[required]} /></div>
             <div className=""><Field type="checkbox" component={"input"} name="rememberMe" />Remember me</div>

@@ -1,4 +1,5 @@
 import {authAPI} from "../../api/auth";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA="SET-USER-DATA";
 
@@ -42,7 +43,9 @@ export const setLoginUser = data => dispatch => {
             // console.log(response);
             // console.log(response.data.userId);
             // console.log('response.resultCode === 0', response.resultCode === 0);
-            (response.resultCode === 0) && dispatch(getAuthUserData());
+            (response.resultCode === 0)
+            ? dispatch(getAuthUserData())
+            : dispatch(stopSubmit('loginUser', {_error: `${response.messages|| "email or password is wrong"}`}));
         })
         .catch(error => console.log(error));
 }
