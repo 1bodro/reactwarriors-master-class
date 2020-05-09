@@ -1,14 +1,14 @@
 import React from "react";
 import s from "./FormsControl.module.scss"
 
-const FormControl = ({input, meta, ...props}) => {
-    return (
-        <div className ={`${s.formControl} ${(meta.error && meta.touched) && s.error}`}>
-            {props.children}
-            <span>{meta.error}</span>
-        </div>
-    )
-}
+// const FormControl = ({input, meta, ...props}) => {
+//     return (
+//         <div className ={`${s.formControl} ${(meta.error && meta.touched) && s.error}`}>
+//             {props.children}
+//             <span>{meta.error}</span>
+//         </div>
+//     )
+// }
 
 export const TextArea = ({input, meta, ...props})=> {
     return (

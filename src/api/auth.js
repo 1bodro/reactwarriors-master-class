@@ -10,5 +10,10 @@ export const authAPI = {
         return instance
             .post(`/auth/login`, {rememberMe: false,...data })
             .then(response => response.data)
+    },
+    logout: function () {
+        return instance
+            .delete(`/auth/login`)
+            .then(response => response.data)
     }
 }

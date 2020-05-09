@@ -4,16 +4,13 @@ import {connect} from "react-redux";
 import {setLoginUser} from "../redux/auth_reducer";
 
 export const LoginContainerAPI = props => {
-    // const onSubmit = formData => console.log(formData);
+    // const onSubmit = formData => props.setLoginUser(formData);
  return (
-        <LoginReduxForm onSubmit={props.setLoginUser}/>
+        <LoginReduxForm onSubmit={props.setLoginUser} {...props}/>
     );
 }
 
-const mapStateToProps = state => {
-    return {
-        userId: state.auth.userId
-    }
-}
+const mapStateToProps = state => ({isAuth: state.auth.isAuth});
 
-export const LoginContainer = connect(mapStateToProps, {setLoginUser})(LoginContainerAPI);
+
+export default connect(mapStateToProps, {setLoginUser})(LoginContainerAPI);

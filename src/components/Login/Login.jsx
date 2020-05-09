@@ -3,8 +3,13 @@ import s from "./Login.module.scss";
 import {Field, reduxForm} from "redux-form"
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
+import {Redirect} from "react-router-dom";
 
 const LoginForm = props => {
+    if (props.isAuth) {
+        return <Redirect to={"/profile"} />
+    }
+
   return (
       <div className={s.container}>
           <span>LOGIN</span>

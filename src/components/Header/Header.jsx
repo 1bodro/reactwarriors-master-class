@@ -2,7 +2,8 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss";
 
-export const Header = () => {
+export const Header = props => {
+    const {isAuth, login, setLogoutUser} = props;
   return (
     <header className={s.container}>
       <div className={s.logo}>
@@ -11,7 +12,14 @@ export const Header = () => {
           alt="logo"
         />
       </div>
-        <NavLink to={`/login`} className={s.login}>Login</NavLink>
+        {isAuth
+        ? <div>
+                <span>{login}</span>
+                <button onClick={setLogoutUser}>
+                    logout
+                </button>
+            </div>
+        : <NavLink to={`/login`} className={s.login}>Login</NavLink>}
     </header>
   );
 };

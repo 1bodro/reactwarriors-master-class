@@ -10,7 +10,7 @@ import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 import FindUsersContainer from "./FindUsers/FindUsersContainer";
 import HeaderContainer from "./Header/HeaderContainer";
-import {LoginContainer} from "./Login/LoginContainer";
+import LoginContainer from "./Login/LoginContainer";
 
 export default class App extends React.Component {
   constructor() {
@@ -18,7 +18,8 @@ export default class App extends React.Component {
 
     this.state = {};
   }
-    /*   ? => означает, что параметр :userId не обязательный*/
+    /*   ? => означает, что параметр :userId не обязательный */
+    /*   :userId =>  параметр id  юзера */
   render() {
     return (
       <div className="app-wrapper">
