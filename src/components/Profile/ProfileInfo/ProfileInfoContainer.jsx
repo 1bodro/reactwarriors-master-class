@@ -1,7 +1,7 @@
 import { ProfileInfo } from "./ProfileInfo";
 import { connect } from "react-redux";
 import React from "react";
-import {getProfile, getUserStatus} from "../../redux/profile_reducer";
+import {getProfile, getUpdateUserStatus, getUserStatus} from "../../redux/profile_reducer";
 
 
 
@@ -14,9 +14,9 @@ class ProfileInfoContainerAPI extends React.Component {
   }
 
   render() {
-    const { profile, isLoading } = this.props;
+    const { profile,status, isLoading, getUpdateUserStatus } = this.props;
     return (
-        <ProfileInfo profile={profile} isLoading={isLoading} />
+        <ProfileInfo profile={profile} status={status} isLoading={isLoading} getUpdateUserStatus={getUpdateUserStatus}/>
     );
   }
 }
@@ -26,8 +26,9 @@ const mapStateToProps = state => {
     profile: state.profilePage.profile,
     isLoading: state.profilePage.isLoading,
     authUserId: state.auth.id,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    status: state.profilePage.status
   };
 };
 
-export const ProfileInfoContainer = connect(mapStateToProps ,{getProfile,getUserStatus})(ProfileInfoContainerAPI);
+export const ProfileInfoContainer = connect(mapStateToProps ,{getProfile,getUserStatus, getUpdateUserStatus})(ProfileInfoContainerAPI);

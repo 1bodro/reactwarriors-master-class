@@ -2,12 +2,12 @@ import React from "react";
 import {Avatar} from "../../Avatar/Avatar";
 import s from "./ProfileInfo.module.scss";
 import {Preloader} from "../../Preloader/Preloader";
-import {ProfileStatusContainer} from "./ProfileStatus/ProfileStatusContainer";
+import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
 
 
 const defaultSrcBanner = "https://upload.wikimedia.org/wikipedia/commons/9/9f/US_Virgin_Islands_banner_Turtle_Bay_Beach.jpg";
 export const ProfileInfo = props => {
-    const {profile, isLoading} = props;
+    const {profile, status, isLoading, getUpdateUserStatus} = props;
     return (
         <div className={s.container}>
             {isLoading
@@ -25,7 +25,8 @@ export const ProfileInfo = props => {
                         <Avatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId}/>
                         <div className={s.desc}>
                             <div>{profile.fullName}</div>
-                            <ProfileStatusContainer />
+                            {/*<ProfileStatusContainer />*/}
+                            <ProfileStatusWithHooks getUpdateUserStatus={getUpdateUserStatus} status={status} />
                         </div>
                     </div>
                 </>}
