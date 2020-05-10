@@ -14,12 +14,12 @@ export const Header = props => {
       </div>
         {isAuth
         ? <div>
-                <span>{login}</span>
-                <button onClick={setLogoutUser}>
+                <NavLink to={`/profile`} className={s.name}>{login}</NavLink>
+                <button className={s.btn} onClick={setLogoutUser}>
                     logout
                 </button>
             </div>
-        : <NavLink to={`/login`} className={s.login}>Login</NavLink>}
+        : <NavLink to={`/login`} className={s.btn}>Login</NavLink>}
     </header>
   );
 };

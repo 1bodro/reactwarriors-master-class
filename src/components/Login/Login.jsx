@@ -10,16 +10,13 @@ const LoginForm = props => {
     }
 
   return (
-      <div className={s.container}>
-          <span>LOGIN</span>
-        <form onSubmit={props.handleSubmit}>
-            {props.error && <div className={s.summaryError}>{props.error}</div>}
-            <div className=""><Field type= "text" placeholder="login" name="email" component={Input} validate={[required]} /></div>
-            <div className=""><Field type="text" placeholder="Password" name="password" component={Input} validate={[required]} /></div>
-            <div className=""><Field type="checkbox" component={"input"} name="rememberMe" />Remember me</div>
-            <div className=""><button>Login</button></div>
-        </form>
-      </div>
+    <form className={s.container} onSubmit={props.handleSubmit}>
+        {props.error && <div className={s.summaryError}>{props.error}</div>}
+        <div className={s.fieldBlock}><Field type= "text" placeholder="login" name="email" component={Input} validate={[required]} /></div>
+        <div className={s.fieldBlock}><Field type="text" placeholder="Password" name="password" component={Input} validate={[required]} /></div>
+        <div className={s.fieldBlock}><Field type="checkbox" component={"input"} name="rememberMe" />Remember me</div>
+        <div className={s.fieldBlock}><button className={s.btnSend}>Login</button></div>
+    </form>
   );
 };
 //a unique name for the form

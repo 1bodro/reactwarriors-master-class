@@ -4,7 +4,7 @@ import {stopSubmit} from "redux-form";
 const SET_USER_DATA="SET-USER-DATA";
 
 let initialState = {
-    usersId: null,
+    id: null,
     email: null,
     login: null,
     isLoading: false,
@@ -28,10 +28,6 @@ export const setAuthUserData = payload => ({type:SET_USER_DATA, payload: payload
 export const getAuthUserData = () => dispatch => {
     return authAPI.me()
         .then(response => {
-            console.log(response);
-            console.log(response.data);
-            console.log('response.resultCode === 0', response.resultCode === 0);
-            console.log('{...response.data, isAuth: true}', {...response.data, isAuth: true});
             (response.resultCode === 0) && dispatch(setAuthUserData({...response.data, isAuth: true}));
         })
         .catch(error => console.log(error));
@@ -54,7 +50,7 @@ export const setLogoutUser = data => dispatch => {
     authAPI.logout(data)
         .then(response => {
             let logoutState = {
-                usersId: null,
+                id: null,
                 email: null,
                 login: null,
                 isAuth: false

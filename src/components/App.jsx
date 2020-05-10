@@ -58,7 +58,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        initialized: state.app.initialized
+        initialized: state.app.initialized,
+        profile: state.profilePage
     }
 };
 

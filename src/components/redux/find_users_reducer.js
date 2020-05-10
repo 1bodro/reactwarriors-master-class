@@ -86,17 +86,17 @@ export const followSuccess = userId => ({ type: FOLLOW, userId: userId });
 export const unFollowSuccess = userId => ({ type: UNFOLLOW, userId: userId });
 export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentPage: currentPage });
 export const setUsersTotalCurrentPage = totalUsersCount => ({ type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount });
-export const setIsLoading = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
+export const setIsLoadingUsers = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
 export const toggleFollowingInProgress = (isFollowing, userId) => ({type: TOGGLE_IS_FOLLOWING, isFollowing: isFollowing, userId: userId });
 
 export const getUsersThunkCreator = (currentPage, pageSize) => dispatch => {
-  dispatch(setIsLoading(true));
+  dispatch(setIsLoadingUsers(true));
   dispatch(setCurrentPage(currentPage));
   usersAPI.getUsers(currentPage, pageSize)
       .then(response => {
         dispatch(setUsers(response.items));
         dispatch(setUsersTotalCurrentPage(response.totalCount));
-        dispatch(setIsLoading(false));
+        dispatch(setIsLoadingUsers(false));
       })
       .catch(error => console.log(error));
 }

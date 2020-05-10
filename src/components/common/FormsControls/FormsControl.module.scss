@@ -1,6 +1,9 @@
 .formControl {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   &.error {
-    input,
+    input[type="text"],
     textarea {
       border-color: red;
     }

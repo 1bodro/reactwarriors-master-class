@@ -3,7 +3,7 @@ import profileAPI from "../../api/profile";
 
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
-const TOGGLE_IS_LOADING = 'TOGGLE-IS-LOADING';
+const TOGGLE_IS_LOADING_PROFILE = 'TOGGLE-IS-LOADING-PROFILE';
 const GET_USER_STATUS = 'GET-USER-STATUS';
 
 const profileReducer = (state = profilePage, action) => {
@@ -25,7 +25,7 @@ const profileReducer = (state = profilePage, action) => {
       return { ...state, profile: action.profile };
     }
 
-    case TOGGLE_IS_LOADING: {
+    case TOGGLE_IS_LOADING_PROFILE: {
       return {
         ...state, isLoading: action.isLoading
       };
@@ -49,16 +49,16 @@ export const setUserProfile = profile => ({
   profile: profile
 });
 
-export const setIsLoading = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
+export const setIsLoadingProfile = isLoading => ({ type: TOGGLE_IS_LOADING_PROFILE, isLoading: isLoading });
 
 export const setUserStatus = status => ({type: GET_USER_STATUS, status: status })
 
 export const getProfile = (userId) => dispatch => {
-  dispatch(setIsLoading(true));
+  dispatch(setIsLoadingProfile(true));
   profileAPI.getProfile(userId)
       .then(response => {
         dispatch(setUserProfile(response.data));
-        dispatch(setIsLoading(false));
+        dispatch(setIsLoadingProfile(false));
       })
       .catch(error => console.log(error));
 }

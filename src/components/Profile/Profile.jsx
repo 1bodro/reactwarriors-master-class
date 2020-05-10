@@ -2,15 +2,32 @@ import React from "react";
 import { PostsContainer } from "./Posts/PostsContainer";
 import { ProfileInfoContainer } from "./ProfileInfo/ProfileInfoContainer";
 import s from "./Profile.module.scss";
-import {AuthRedirectComponent} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
+import {Redirect, withRouter} from "react-router-dom";
+import {connect} from "react-redux";
 
-const Profile = () => {
-  return (
-    <div className={s.container}>
-      <ProfileInfoContainer />
-      <PostsContainer />
-    </div>
-  );
-};
+class Profile extends React.Component {
+    render() {
+        const {match, authUserId} = this.props;
+        const userId = match.params.userId || authUserId;
+        return userId
+            ? (
+                <div className={s.container}>
+                    <ProfileInfoContainer userId={userId}/>
+                    {!match.params.userId ? <PostsContainer/> : null}
+                </div>
+            )
+            : <Redirect to={"/login"}/>
+    }
+}
 
-export default AuthRedirectComponent(Profile);
+const mapStateToProps = state => {
+    return {
+        authUserId: state.auth.id,
+        profile: state.profilePage
+    }
+}
+
+export default compose(
+    connect(mapStateToProps, null),
+    withRouter)(Profile);

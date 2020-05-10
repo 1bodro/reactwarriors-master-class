@@ -28,7 +28,7 @@
   }
 }
 
-.login {
+.btn {
   padding: 6px 12px;
   min-width: 100px;
   border: 2px solid #ffffff;
@@ -43,6 +43,19 @@
     color: #ffffff;
     background: #fdd949;
     outline: none;
+    text-decoration: none;
+  }
+}
+
+.name {
+  display: inline-block;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 24px;
+
+  &:hover {
+    color: #477895;
     text-decoration: none;
   }
 }
