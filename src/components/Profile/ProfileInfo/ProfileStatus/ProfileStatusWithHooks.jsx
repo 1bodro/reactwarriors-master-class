@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import s from "./ProfileStatus.module.scss";
 
 
@@ -8,6 +8,10 @@ export const ProfileStatusWithHooks = props => {
 
     let [editMode, setEditMode] = useState(false);
     let [editStatus, setStatus] = useState(status);
+
+    useEffect(()=> {
+        setStatus(status);
+    }, [status]);
 
     const activateEditMode = () => {
         setEditMode(true);
@@ -26,7 +30,7 @@ export const ProfileStatusWithHooks = props => {
         <div className={s.container}>
             {editMode
                 ? <div className={s.change}>
-                    <input onChange = {onStatusChange} onBlur={deactivateEditMode} defaultValue={status} autoFocus={true}/>
+                    <input onChange = {onStatusChange} onBlur={deactivateEditMode} value={editStatus} autoFocus={true}/>
                 </div>
                 : <div className={s.status}>
                     <span onDoubleClick={activateEditMode}>{status||'Write your status here'}</span>
