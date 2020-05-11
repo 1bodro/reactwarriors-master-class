@@ -1,5 +1,7 @@
 import React from "react";
 import s from "./FormsControl.module.scss"
+import {Field} from "redux-form";
+import {required} from "../../../utils/validators/validators";
 
 // const FormControl = ({input, meta, ...props}) => {
 //     return (
@@ -40,6 +42,10 @@ export const CustomCheckBox = props => {
         </div>
     )
 }
+
+export const createFormField = (placeholder, name, validators, component) => (
+    <Field type= "text" placeholder={placeholder} name={name} component={component} validate={validators} />
+);
 
 // Решение с инета
 

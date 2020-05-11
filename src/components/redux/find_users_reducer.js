@@ -1,5 +1,6 @@
 // import { findUsersPage } from "./data";
 import {usersAPI} from "../../api/users";
+import {updateObjectInArray} from "../../utils/object-helpers";
 
 const LOAD_USERS = "LOAD-USERS";
 const SET_USERS = "SET-USERS";
@@ -48,7 +49,7 @@ const findUsersReducer = (state = initialState, action) => {
     case TOGGLE_IS_FOLLOWING: {
 
       return {
-        ...state, followingInProgress : action.isFollowing
+        ...state, followingInProgress: action.isFollowing
             ? [...state.followingInProgress, action.userId]
             : state.followingInProgress.filter(id => id !==action.userId)
       };
@@ -56,6 +57,7 @@ const findUsersReducer = (state = initialState, action) => {
     case FOLLOW: {
       return {
         ...state,
+        // users: updateObjectInArray(state.users, action.userId, 'id', {followed: true} )
         users: state.users.map(user => {
           if (user.id === action.userId) {
             return { ...user, followed: true };
@@ -89,19 +91,18 @@ export const setUsersTotalCurrentPage = totalUsersCount => ({ type: SET_TOTAL_US
 export const setIsLoadingUsers = isLoading => ({ type: TOGGLE_IS_LOADING, isLoading: isLoading });
 export const toggleFollowingInProgress = (isFollowing, userId) => ({type: TOGGLE_IS_FOLLOWING, isFollowing: isFollowing, userId: userId });
 
-export const getUsersThunkCreator = (currentPage, pageSize) => dispatch => {
+export const getUsersThunkCreator = (currentPage, pageSize) => async dispatch => {
   dispatch(setIsLoadingUsers(true));
   dispatch(setCurrentPage(currentPage));
-  usersAPI.getUsers(currentPage, pageSize)
-      .then(response => {
-        dispatch(setUsers(response.items));
-        dispatch(setUsersTotalCurrentPage(response.totalCount));
-        dispatch(setIsLoadingUsers(false));
-      })
-      .catch(error => console.log(error));
+
+  const response = await usersAPI.getUsers(currentPage, pageSize);
+
+  dispatch(setUsers(response.items));
+  dispatch(setUsersTotalCurrentPage(response.totalCount));
+  dispatch(setIsLoadingUsers(false));
 }
 
-export const toggleFollowing = (userId, follow=false) => dispatch => {
+export const toggleFollowing = (userId, follow=false) => async dispatch => {
   dispatch(toggleFollowingInProgress(true, userId));
   const usersAPIRequest = follow
   ? usersAPI.followUser
@@ -110,15 +111,11 @@ export const toggleFollowing = (userId, follow=false) => dispatch => {
   const followState = follow
   ? followSuccess
   : unFollowSuccess;
-// console.log('usersAPIRequest',usersAPIRequest );
-// console.log('usersAPIRequest',followState );
 
-    usersAPIRequest(userId)
-        .then(response => {
-          (response.resultCode ===0) && dispatch(followState(userId));
-          dispatch(toggleFollowingInProgress(false, userId));
-        })
-        .catch(error => console.log(error));
+  const response = await usersAPIRequest(userId);
+
+  (response.resultCode ===0) && dispatch(followState(userId));
+  dispatch(toggleFollowingInProgress(false, userId));
 }
 
 // export const getUsersThunkCreator = (currentPage, pageSize) => {
