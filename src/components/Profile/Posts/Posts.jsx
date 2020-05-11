@@ -7,7 +7,7 @@ import {TextArea} from "../../common/FormsControls/FormsControls";
 
 const maxLength30 = maxLengthCreator(30);
 
-export const Posts = props => {
+export const Posts = React.memo(props => {
   const {
     sendPost,
     userPhoto,
@@ -36,7 +36,7 @@ export const Posts = props => {
       </div>
     </div>
   );
-};
+});
 
 const AddPostsForm = props => {
   return (
