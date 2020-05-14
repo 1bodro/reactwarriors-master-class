@@ -32,5 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "devDependencies": {
+    "react-test-renderer": "^16.8.6"
+  }
 }
