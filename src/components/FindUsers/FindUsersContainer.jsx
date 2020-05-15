@@ -2,7 +2,6 @@ import {FindUsers} from "./FindUsers";
 import { toggleFollowingInProgress, getUsersThunkCreator,toggleFollowing } from "../redux/find_users_reducer";
 import { connect } from "react-redux";
 import React from "react";
-import {AuthRedirectComponent} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
   getCurrentPage,
@@ -37,7 +36,7 @@ class FindUsersAPIComponent extends React.Component {
   }
 
   render() {
-    const {users, totalUsersCount, pageSize, currentPage , isLoading, followingInProgress, toggleFollowingInProgress,toggleFollowing } = this.props;
+    const {users, totalUsersCount, pageSize, currentPage , isLoading, followingInProgress, toggleFollowing } = this.props;
     return (
         <FindUsers
             onPageChanged={this.onPageChanged}
@@ -47,7 +46,6 @@ class FindUsersAPIComponent extends React.Component {
             currentPage={currentPage}
             isLoading={isLoading}
             followingInProgress={followingInProgress}
-            toggleFollowingInProgress={toggleFollowingInProgress}
             toggleFollowing={toggleFollowing}
         />
     )

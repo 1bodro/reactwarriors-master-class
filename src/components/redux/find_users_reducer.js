@@ -13,7 +13,7 @@ const TOGGLE_IS_FOLLOWING = 'TOGGLE-IS-FOLLOWING';
 
 let initialState = {
   users: [],
-  pageSize: 5,
+  pageSize: 20,
   totalUsersCount: 0,
   currentPage: 1,
   isLoading: false,
@@ -57,13 +57,7 @@ const findUsersReducer = (state = initialState, action) => {
     case FOLLOW: {
       return {
         ...state,
-        // users: updateObjectInArray(state.users, action.userId, 'id', {followed: true} )
-        users: state.users.map(user => {
-          if (user.id === action.userId) {
-            return { ...user, followed: true };
-          }
-          return user;
-        })
+        users: updateObjectInArray(state.users, action.userId, 'id', {followed: true} )
       };
     }
     case UNFOLLOW: {

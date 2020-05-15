@@ -4,11 +4,15 @@
   height: 100%;
   padding: 0 0 10px 0;
   overflow: hidden;
+  &>div:first-child {
+    height: calc(100% - 60px);
+    min-height: calc(100% - 60px);
+  }
 }
 
 .users {
-  height: calc(100% - 85px);
-  min-height: calc(100% - 85px);
+  height: calc(100% - 60px);
+  min-height: calc(100% - 60px);
   padding: 0 2px 0 0;
   margin-right: 2px;
   border-radius: 6px;

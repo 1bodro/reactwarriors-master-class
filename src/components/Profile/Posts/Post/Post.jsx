@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar } from "../../../Avatar/Avatar";
+import { Avatar } from "../../../common/Avatar/Avatar";
 import s from "./Post.module.scss";
 
 export const Post = props => {

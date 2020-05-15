@@ -1,5 +1,5 @@
 import React from "react";
-import {Avatar} from "../../Avatar/Avatar";
+import {Avatar} from "../../common/Avatar/Avatar";
 import s from "./ProfileInfo.module.scss";
 import {Preloader} from "../../Preloader/Preloader";
 import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
