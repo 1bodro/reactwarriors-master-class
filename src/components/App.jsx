@@ -4,17 +4,19 @@ import {Route, withRouter} from "react-router-dom";
 import { Sidebar } from "./Sidebar/Sidebar";
 
 import Profile from "./Profile/Profile";
-import Dialogs from "./Dialogs/Dialogs";
 import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
-import FindUsersContainer from "./FindUsers/FindUsersContainer";
 import HeaderContainer from "./Header/HeaderContainer";
 import LoginContainer from "./Login/LoginContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app_reducer";
 import {Preloader} from "./Preloader/Preloader";
+import {withSuspense} from "../hoc/withSuspense";
+
+const FindUsers = React.lazy(()=> import("./FindUsers/FindUsersContainer"));
+const Dialogs = React.lazy(()=> import("./Dialogs/Dialogs"));
 
 class App extends React.Component {
   constructor(props) {
@@ -34,28 +36,21 @@ class App extends React.Component {
       <div className="app-wrapper">
         <HeaderContainer />
         <Sidebar />
-        <div className="content">
-          <Route path="/profile/:userId?" render={() => <Profile />} />
-          <Route
-            path="/messages"
-            render={() => <Dialogs />}
-          />
-          <Route
-            path="/users"
-            render={() => {
-              return <FindUsersContainer />;
-            }}
-          />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={() => <LoginContainer />} />
-        </div>
+          <div className="content">
+              <Route exact path="/" render={() => <Profile/>}/>
+              <Route path="/profile/:userId?" render={() => <Profile/>}/>
+              <Route path="/messages" render={() => withSuspense(Dialogs)}/>
+              <Route path="/users" render={() => withSuspense(FindUsers)}/>
+              <Route path="/music" render={() => <Music/>}/>
+              <Route path="/news" render={() => <News/>}/>
+              <Route path="/settings" render={() => <Settings/>}/>
+              <Route path="/login" render={() => <LoginContainer/>}/>
+          </div>
       </div>
-    );
+         );
   }
 }
-
+// <Route path="/users" render={withSuspense(Users)}/>
 const mapStateToProps = state => {
     return {
         initialized: state.app.initialized,
