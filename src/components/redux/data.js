@@ -236,7 +236,8 @@ export const profilePage = {
   posts: posts,
   profile: null,
   isLoading: true,
-  status: ""
+  status: "",
+  authUser: null
 };
 
 export const profile = {

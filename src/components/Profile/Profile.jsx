@@ -1,20 +1,22 @@
 import React from "react";
-import { PostsContainer } from "./Posts/PostsContainer";
-import { ProfileInfoContainer } from "./ProfileInfo/ProfileInfoContainer";
+import {PostsContainer} from "./Posts/PostsContainer";
+import {ProfileInfoContainer} from "./ProfileInfo/ProfileInfoContainer";
 import s from "./Profile.module.scss";
 import {compose} from "redux";
 import {Redirect, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
-class Profile extends React.Component {
+class Profile extends React.PureComponent {
+
     render() {
         const {match, authUserId} = this.props;
         const userId = match.params.userId || authUserId;
+        const isOwner = !!(!match.params.userId && authUserId);
         return userId
             ? (
                 <div className={s.container}>
-                    <ProfileInfoContainer userId={userId}/>
-                    {!match.params.userId ? <PostsContainer/> : null}
+                    <ProfileInfoContainer userId={userId} isOwner={isOwner}/>
+                    {isOwner ? <PostsContainer/> : null}
                 </div>
             )
             : <Redirect to={"/login"}/>

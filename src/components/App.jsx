@@ -8,7 +8,6 @@ import { Music } from "./Music/Music";
 import { News } from "./News/News";
 import { Settings } from "./Settings/Settings";
 import HeaderContainer from "./Header/HeaderContainer";
-import LoginContainer from "./Login/LoginContainer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app_reducer";
@@ -17,6 +16,7 @@ import {withSuspense} from "../hoc/withSuspense";
 
 const FindUsers = React.lazy(()=> import("./FindUsers/FindUsersContainer"));
 const Dialogs = React.lazy(()=> import("./Dialogs/Dialogs"));
+const Login = React.lazy(()=> import("./Login/LoginContainer"));
 
 class App extends React.Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class App extends React.Component {
               <Route path="/music" render={() => <Music/>}/>
               <Route path="/news" render={() => <News/>}/>
               <Route path="/settings" render={() => <Settings/>}/>
-              <Route path="/login" render={() => <LoginContainer/>}/>
+              <Route path="/login" render={() =>  withSuspense(Login)}/>
           </div>
       </div>
          );

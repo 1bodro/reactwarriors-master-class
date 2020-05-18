@@ -25,15 +25,19 @@
   },
   "keywords": [],
   "name": "my-way",
+  "homepage": "https://1bodro.github.io/reactwarriors-master-class",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "react-test-renderer": "^16.8.6"
   }
 }

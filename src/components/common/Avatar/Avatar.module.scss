@@ -5,6 +5,7 @@
   border-radius: 50%;
   overflow: hidden;
   background:#ffffff;
+  cursor: pointer;
 
   &>div{
     border-radius: 50%;
@@ -23,3 +24,16 @@
   min-width: 80px;
   min-height: 80px;
 }
+
+
+
+.loading {
+  &:hover{
+
+  }
+}
+
+.hideInput {
+  display: none;
+}
+
