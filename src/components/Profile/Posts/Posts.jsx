@@ -4,7 +4,6 @@ import s from "./Posts.module.scss";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControls/FormsControls";
-import {Avatar} from "../../common/Avatar/Avatar";
 
 const maxLength30 = maxLengthCreator(30);
 

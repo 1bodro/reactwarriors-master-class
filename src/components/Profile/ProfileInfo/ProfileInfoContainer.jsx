@@ -4,6 +4,8 @@ import React from "react";
 import {getProfile, getUpdateUserStatus, getUserStatus, savePhoto} from "../../redux/profile_reducer";
 
 
+
+
 class ProfileInfoContainerAPI extends React.PureComponent {
 
   componentDidMount() {

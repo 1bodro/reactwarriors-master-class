@@ -26,9 +26,14 @@ export const Avatar = props => {
 export const UserAvatar = ({savePhoto,size, src, id='', ...props }) => {
     const onMainPhotoSelected= e => {e.target.files && savePhoto(e.target.files[0])};
     return (
-        <label htmlFor="loadingImg" className={`${s.photo} ${s[size]}`}>
-            <AvaImg  src={src}/>
-            <input className={s.hideInput} id="loadingImg" type={"file"} onChange={onMainPhotoSelected}/>
+        <label className={s.changePhoto} htmlFor="loadingImg">
+            <div className={`${s.photo} ${s[size]}`}>
+                <AvaImg  src={src}/>
+            </div>
+            <div className={s.changePhotoBlock}>
+                <span  className={s.changePhotoButton}>update</span>
+                <input className={s.hideInput} id="loadingImg" type={"file"} onChange={onMainPhotoSelected}/>
+            </div>
         </label>
     );
 }

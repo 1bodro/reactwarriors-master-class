@@ -3,6 +3,7 @@ import {Avatar, UserAvatar} from "../../common/Avatar/Avatar";
 import s from "./ProfileInfo.module.scss";
 import {Preloader} from "../../Preloader/Preloader";
 import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
+import {ProfileDataGuest, ProfileDataUser} from "./ProfileData/ProfileData";
 
 
 const defaultSrcBanner = "https://upload.wikimedia.org/wikipedia/commons/9/9f/US_Virgin_Islands_banner_Turtle_Bay_Beach.jpg";
@@ -30,36 +31,9 @@ export const ProfileInfo = props => {
                             <div>{profile.fullName}</div>
                             <ProfileStatusWithHooks getUpdateUserStatus={getUpdateUserStatus} status={status} />
                         </div>
-                        <ProfileData profile={profile} />
+                        {isOwner? <ProfileDataUser profile={profile} /> : <ProfileDataGuest profile={profile} />}
                     </div>
                 </>}
         </div>
     );
 };
-
-const Contact = ({name, value}) => {
-    return <div><b>{name}:</b> {value}</div>
-}
-
-const ProfileData = ({profile}) => {
-    return (
-        <div className={s.desc}>
-            <div>
-                <b>looking for a job:</b> {profile.lookingForAJob ? "yes" : "no"}
-            </div>
-            {
-                profile.lookingForAJob &&
-                <div>
-                    <b>My profile skills:</b> {profile.lookingForAJob}
-                </div>
-            }
-            <div>
-                <b>About me:</b> {profile.aboutMe ? profile.aboutMe : null}
-            </div>
-            <div>
-                <b>Contacts:</b> {Object.keys(profile.contacts).map((contact, i) => <Contact key={i} name={contact}
-                                                                                        value={profile.contacts[contact]}/>)}
-            </div>
-        </div>
-)
-}

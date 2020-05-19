@@ -237,7 +237,11 @@ export const profilePage = {
   profile: null,
   isLoading: true,
   status: "",
-  authUser: null
+  authUser: {
+    photos: {
+      large: null
+    }
+  }
 };
 
 export const profile = {

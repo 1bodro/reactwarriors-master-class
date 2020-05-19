@@ -1,0 +1,21 @@
+.container {
+
+}
+
+.banner {
+  height: 180px;
+  min-height: 180px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 0 20px;
+}
+
+.desc {
+  flex: 1 1 auto;
+  margin-left: 10px;
+}
