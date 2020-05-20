@@ -42,8 +42,11 @@ export const CustomCheckBox = props => {
     )
 }
 
-export const createFormField = (placeholder, name, validators, component) => (
-    <Field type= "text" placeholder={placeholder} name={name} component={component} validate={validators} />
+export const createFormField = (placeholder, name, validators, component, props={}, text="") => (
+    <div>
+        <Field placeholder={placeholder} name={name} component={component} validate={validators} {...props} />
+        {text}
+    </div>
 );
 
 // Решение с инета
