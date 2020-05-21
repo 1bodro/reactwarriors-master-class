@@ -1,6 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Header.module.scss";
+import logo from "../../assets/img/logo.jpg";
 
 export const Header = props => {
     const {isAuth, login, setLogoutUser} = props;
@@ -8,7 +9,7 @@ export const Header = props => {
     <header className={s.container}>
       <div className={s.logo}>
         <img
-          src="https://image.freepik.com/free-photo/man-through-hole-paper_1368-47349.jpg"
+          src={logo}
           alt="logo"
         />
       </div>

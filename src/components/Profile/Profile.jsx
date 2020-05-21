@@ -5,6 +5,7 @@ import s from "./Profile.module.scss";
 import {compose} from "redux";
 import {Redirect, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {Icons} from "../common/Icons/Icons";
 
 class Profile extends React.PureComponent {
 
@@ -15,6 +16,7 @@ class Profile extends React.PureComponent {
         return userId
             ? (
                 <div className={s.container}>
+                    <Icons/>
                     <ProfileInfoContainer userId={userId} isOwner={isOwner}/>
                     {isOwner ? <PostsContainer/> : null}
                 </div>

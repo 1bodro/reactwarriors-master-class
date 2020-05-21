@@ -1,7 +1,3 @@
-.container {
-
-}
-
 .banner {
   height: 180px;
   min-height: 180px;
@@ -11,11 +7,80 @@
 
 .info {
   display: flex;
-  align-items: center;
-  margin: 20px 0 0 20px;
+  flex-wrap: wrap;
+  margin: 20px 0 20px 20px;
+  min-height: 250px;
+
+  &__account {
+    width: 170px;
+    margin-right: 10px;
+    &__details {
+      margin-top: 10px;
+    }
+    &__name {
+      font-size: 20px;
+      font-width: 600;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex: 1 1 auto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding:20px 20px 0 180px;
+  }
+  &__editButton{
+    display: block;
+    width: 100px;
+    min-width: 100px;
+    height: auto;
+    border: 2px solid #fdd949;
+    border-radius: 6px;
+    background: #fff5d1;
+    font-size: 16px;
+    padding: 6px 12px;
+    color: #ccab05;
+    &:hover {
+      background: #fdd949;
+      color: #ffffff;
+      outline: none;
+    }
+  }
+
+  &__contacts {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &>span {
+      margin-right: 10px;
+    }
+  }
 }
 
-.desc {
-  flex: 1 1 auto;
-  margin-left: 10px;
+.editProfilPopup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(253, 217, 73, 0.3);
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  &.open {
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+  }
 }

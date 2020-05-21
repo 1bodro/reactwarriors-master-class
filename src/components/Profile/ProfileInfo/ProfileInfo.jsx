@@ -4,19 +4,18 @@ import s from "./ProfileInfo.module.scss";
 import {Preloader} from "../../Preloader/Preloader";
 import {ProfileStatusWithHooks} from "./ProfileStatus/ProfileStatusWithHooks";
 import {ProfileData, ProfileDataFormRedux} from "./ProfileData/ProfileData";
+import defaultSrcBanner from "../../../assets/img/beach.jpg";
+import {Contacts} from "./Contacts/Contacts";
 
-
-const defaultSrcBanner = "https://upload.wikimedia.org/wikipedia/commons/9/9f/US_Virgin_Islands_banner_Turtle_Bay_Beach.jpg";
 export const ProfileInfo = props => {
     const {profile, status, isLoading, getUpdateUserStatus, isOwner, savePhoto, saveProfile} = props;
     const [editMode, setEditMode] = useState(false);
     const onSubmit = formData => {
-        console.log(formData);
         saveProfile(formData)
     }
 
     return (
-        <div className={s.container}>
+        <>
             {isLoading
                 ? <Preloader/>
                 : <>
@@ -29,20 +28,29 @@ export const ProfileInfo = props => {
                         </div>
                     </div>
                     <div className={s.info}>
-                        {isOwner
-                        ? <UserAvatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId} savePhoto={savePhoto} />
-                        : <Avatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId}/>}
-                        <div className={s.desc}>
-                            <div>{profile.fullName}</div>
-                            <ProfileStatusWithHooks getUpdateUserStatus={getUpdateUserStatus} status={status} />
+                        <div className={s.info__account}>
+                            {isOwner
+                            ? <UserAvatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId} savePhoto={savePhoto} />
+                            : <Avatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId}/>}
+                                <div className={s.info__account__details}>
+                                    <span className={s.info__account__name}>{profile.fullName}</span>
+                                    <ProfileStatusWithHooks getUpdateUserStatus={getUpdateUserStatus} status={status} />
+                                </div>
                         </div>
-                        <div className={s.desc}>
-                            {editMode
-                                ? <ProfileDataFormRedux initialValues={profile} onSubmit={onSubmit}/>
-                                : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => setEditMode(true)} />}
+                        <div className={s.info__description}>
+                            <ProfileData profile={profile} />
+                        </div>
+                        <div className={s.info__footer}>
+                            {isOwner && <button className={s.info__editButton} onClick={() => setEditMode(true)}>edit</button>}
+                            <div className={s.info__contacts}>
+                                <span>Contacts:</span> <Contacts contacts={profile.contacts}/>
+                            </div>
                         </div>
                     </div>
+                    <div className={`${s.editProfilPopup} ${editMode? s.open : ''}` }>
+                        {editMode && <ProfileDataFormRedux initialValues={profile} onSubmit={onSubmit} onClosePopup={() => setEditMode(false)} /> }
+                    </div>
                 </>}
-        </div>
+        </>
     );
 };

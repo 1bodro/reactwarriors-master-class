@@ -31,9 +31,9 @@ export const UserAvatar = ({savePhoto,size, src, id='', ...props }) => {
                 <AvaImg  src={src}/>
             </div>
             <div className={s.changePhotoBlock}>
-                <span  className={s.changePhotoButton}>update</span>
                 <input className={s.hideInput} id="loadingImg" type={"file"} onChange={onMainPhotoSelected}/>
             </div>
+            <span  className={s.changePhotoButton}>update</span>
         </label>
     );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Post } from "./Post/Post";
 import s from "./Posts.module.scss";
 import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../utils/validators/validators";
+import {maxLengthCreator} from "../../../utils/validators/validators";
 import {TextArea} from "../../common/FormsControls/FormsControls";
 
 const maxLength30 = maxLengthCreator(30);
@@ -46,7 +46,7 @@ const AddPostsForm = props => {
             name="newPostText"
             className="textarea"
             placeholder="Write posts here"
-            validate={[required, maxLength30]}
+            validate={[maxLength30]}
         />
         <button className={s.btnSend}>
           send

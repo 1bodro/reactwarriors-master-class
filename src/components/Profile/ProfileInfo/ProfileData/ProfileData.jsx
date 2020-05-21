@@ -1,58 +1,61 @@
 import React from "react";
 import s from "./ProfileData.module.scss";
-import {TextArea} from "../../../common/FormsControls/FormsControls";
+import {CustomCheckBox, Input, TextArea} from "../../../common/FormsControls/FormsControls";
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator} from "../../../../utils/validators/validators";
+
+const maxLength300 = maxLengthCreator(300);
 
 
+export const ProfileData = ({profile}) => {
 
-const Contact = ({contactName, contactValue}) => {
-    return <div><b>{contactName}:</b> {contactValue}</div>
-}
-
-export const ProfileData = ({profile, isOwner, goToEditMode}) => {
     return (
-        <div className={s.desc}>
-            {isOwner && <button onClick={goToEditMode}>edit</button>}
-            <div>
-                <b>looking for a job:</b> {profile.lookingForAJob ? "yes" : "no"}
-            </div>
-            {
-                profile.lookingForAJob &&
+        <>
+            <div className={s.aboutMe}>
                 <div>
-                    <b>My profile skills:</b> {profile.lookingForAJobDescription}
+                    <span className={s.profile__title}>About me:</span>
+                    <p className={s.profile__desc}>
+                        {profile.aboutMe ? profile.aboutMe : null}
+                    </p>
                 </div>
-            }
-            <div>
-                <b>About me:</b> {profile.aboutMe ? profile.aboutMe : null}
             </div>
-            <div>
-                <b>Contacts:</b> {Object.keys(profile.contacts).map((contact, i) => <Contact key={i} contactName={contact}
-                                                                                             contactValue={profile.contacts[contact]}/>)}
+
+            <div className={s.aboutMe}>
+                <span className={s.profile__title}>
+                    My profile skills:
+                    <span className={`${s.profile__label} ${profile.lookingForAJob ? s.profile__label__green : s.profile__label__red}`}>
+                        {!profile.lookingForAJob ? "no ": ""}looking for a job
+                    </span>
+                </span>
+                <p className={s.profile__desc}>
+                    {profile.lookingForAJobDescription ? profile.lookingForAJobDescription : null}
+                </p>
             </div>
-        </div>
+        </>
     )
 }
 
-const ProfileDataForm = ({handleSubmit}) => {
+const ProfileDataForm = ({handleSubmit, onClosePopup}) => {
     return (
-        <form className={s.desc} onSubmit={handleSubmit}>
-            <button onClick={()=> {}}>save</button>
-            <div>
-                <b>full name:</b><Field type= "text" placeholder="Full name" name="fullName" component={"input"} validate={[]} />
+        <form className={s.profile__popup} onSubmit={handleSubmit}>
+            <div className={s.profile__popup__field}>
+                <b>full name:</b><Field type="text" placeholder="Full name" name="fullName" component={Input}/>
             </div>
-            <div>
-                <b>looking for a job:</b> <Field type="checkbox" component={"input"} name="lookingForAJob" />
+            <div className={s.profile__popup__field}>
+                <b>looking for a job:</b> <Field type="checkbox" component={CustomCheckBox} name="lookingForAJob"/>
             </div>
-            <div>
-                <b>My profile skills:</b><Field component={TextArea} name="lookingForAJobDescription" className="textarea" placeholder="My profile skills" validate={[]}/>
+            <div className={s.profile__popup__field}>
+                <b>My profile skills:</b><Field component={TextArea} name="lookingForAJobDescription" className="textarea" placeholder="My profile skills"/>
             </div>
-            <div>
-                <b>About me:</b> <Field component={TextArea} name="aboutMe" className="textarea" placeholder="About me" validate={[]}/>
+            <div className={s.profile__popup__field}>
+                <b>About me:</b> <Field component={TextArea} name="aboutMe" className="textarea" placeholder="About me"/>
             </div>
             {/*<div>*/}
             {/*    <b>Contacts:</b> {Object.keys(profile.contacts).map((contact, i) => <Contact key={i} name={contact}*/}
             {/*                                                                                 value={profile.contacts[contact]}/>)}*/}
             {/*</div>*/}
+            <button className={s.profile__popup__buttonSend} onClick={() => {}}>save</button>
+            <span className={s.profile__popup__buttonClose} onClick={onClosePopup}>X</span>
         </form>
     )
 }
