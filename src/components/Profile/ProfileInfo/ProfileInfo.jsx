@@ -11,7 +11,8 @@ export const ProfileInfo = props => {
     const {profile, status, isLoading, getUpdateUserStatus, isOwner, savePhoto, saveProfile} = props;
     const [editMode, setEditMode] = useState(false);
     const onSubmit = formData => {
-        saveProfile(formData)
+        saveProfile(formData);
+        setEditMode(false);
     }
 
     return (
@@ -43,12 +44,13 @@ export const ProfileInfo = props => {
                         <div className={s.info__footer}>
                             {isOwner && <button className={s.info__editButton} onClick={() => setEditMode(true)}>edit</button>}
                             <div className={s.info__contacts}>
-                                <span>Contacts:</span> <Contacts contacts={profile.contacts}/>
+                                <span>Contacts:</span>
+                                <Contacts contacts={profile.contacts}/>
                             </div>
                         </div>
                     </div>
-                    <div className={`${s.editProfilPopup} ${editMode? s.open : ''}` }>
-                        {editMode && <ProfileDataFormRedux initialValues={profile} onSubmit={onSubmit} onClosePopup={() => setEditMode(false)} /> }
+                    <div className={`${s.editProfilePopup} ${editMode? s.open : ''}` }>
+                        {editMode && <ProfileDataFormRedux  initialValues={profile} onSubmit={onSubmit} onClosePopup={() => setEditMode(false)} /> }
                     </div>
                 </>}
         </>

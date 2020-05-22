@@ -12,20 +12,29 @@
   min-height: 250px;
 
   &__account {
-    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
     margin-right: 10px;
+
     &__details {
       margin-top: 10px;
     }
+
     &__name {
-      font-size: 20px;
-      font-width: 600;
+      font-size: 18px;
+      font-weight: 600;
+      width: 100%;
+      display: block;
+      text-align: center;
     }
   }
 
   &__description {
     display: flex;
     flex: 1 1 auto;
+    width: calc(100% - 230px);
   }
 
   &__footer {
@@ -33,9 +42,10 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding:20px 20px 0 180px;
+    padding: 20px 20px 0 230px;
   }
-  &__editButton{
+
+  &__editButton {
     display: block;
     width: 100px;
     min-width: 100px;
@@ -46,6 +56,7 @@
     font-size: 16px;
     padding: 6px 12px;
     color: #ccab05;
+
     &:hover {
       background: #fdd949;
       color: #ffffff;
@@ -58,20 +69,21 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    &>span {
+
+    & > span {
       margin-right: 10px;
     }
   }
 }
 
-.editProfilPopup {
+.editProfilePopup {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   width: 0;
   height: 0;
-  background: rgba(253, 217, 73, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   opacity: 0;
   left: 50%;
   top: 50%;

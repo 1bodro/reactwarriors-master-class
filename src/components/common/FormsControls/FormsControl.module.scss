@@ -1,9 +1,12 @@
 .formControl {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  flex: 1 1 auto;
   width: 100%;
   &.error {
     input[type="text"],
+    input[type="password"],
     textarea {
       border-color: red;
     }
@@ -15,4 +18,25 @@
     color: red;
     opacity: 0;
   }
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px;
+  outline: none;
+  outline-style: none;
+  border:2px solid #fdd949;
+  border-radius: 6px;
+}
+textarea {
+  display: block;
+  padding: 10px;
+  overflow: auto!important;
+  resize: none!important;
+  outline: none;
+  outline-style: none;
+  border: 2px solid #fdd949;
+  border-radius: 6px;
 }
