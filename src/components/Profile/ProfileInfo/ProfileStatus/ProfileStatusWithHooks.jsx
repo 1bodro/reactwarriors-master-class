@@ -32,7 +32,7 @@ export const ProfileStatusWithHooks = props => {
                 ? <div className={s.changeStatus}>
                     <input onChange = {onStatusChange} onBlur={deactivateEditMode} value={editStatus} autoFocus={true}/>
                 </div>
-                : <span className={`${s.staticStatus} ${isOwner? s.hoverEffect : ''}`} onClick={activateEditMode}>{status||'Have a nice day'}</span>
+                : <span className={`${s.staticStatus} ${isOwner? s.hoverEffect : ''}`} onClick={activateEditMode}>~ {status||'Have a nice day'} ~</span>
             }
         </>
     );
