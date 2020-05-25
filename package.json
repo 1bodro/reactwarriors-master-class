@@ -25,6 +25,7 @@
   },
   "keywords": [],
   "name": "my-way",
+  "proxy": "http://localhost:3000",
   "homepage": "https://1bodro.github.io/reactwarriors-master-class",
   "private": true,
   "scripts": {

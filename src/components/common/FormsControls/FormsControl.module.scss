@@ -1,4 +1,5 @@
 .formControl {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -17,6 +18,8 @@
   span {
     color: red;
     opacity: 0;
+    position: absolute;
+    top: 100%;
   }
 }
 
@@ -29,6 +32,7 @@ input[type="password"] {
   outline-style: none;
   border:2px solid #fdd949;
   border-radius: 6px;
+  height: 40px;
 }
 textarea {
   display: block;

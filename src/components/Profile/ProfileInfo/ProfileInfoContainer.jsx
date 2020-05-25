@@ -10,15 +10,18 @@ class ProfileInfoContainerAPI extends React.PureComponent {
 
   componentDidMount() {
     const { getProfile, getUserStatus, userId, isOwner } =this.props;
-    getProfile(userId, isOwner);
+    const needPreload = true;
+    getProfile(userId, isOwner, needPreload);
     getUserStatus(userId);
   }
 
 
   componentDidUpdate(prevProps, prevState) {
-    const { getProfile, getUserStatus, userId } =this.props;
+    const { getProfile, getUserStatus, userId, isOwner } =this.props;
+    const needPreload = true;
+
     if (prevProps.userId !== userId) {
-      getProfile(userId);
+      getProfile(userId, isOwner, needPreload);
       getUserStatus(userId);
     }
   }

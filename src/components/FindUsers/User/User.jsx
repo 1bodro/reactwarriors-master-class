@@ -14,7 +14,7 @@ let defaultStatus ="Nothing is more silly than silly laughter";
   return (
     <div className={`${s.container}`}>
       <div className={`${s.follow}`}>
-        <Avatar size="lg" src={photo} id={userId} />
+        <Avatar size="md" src={photo} id={userId} />
         <button
             className={`${s.follow__btn} ${followed? s.remove : s.add}`}
             disabled={followingInProgress.some( id => id === userId)}

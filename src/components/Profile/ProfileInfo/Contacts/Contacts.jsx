@@ -3,7 +3,7 @@ import s from "./Contacts.module.scss";
 
 const Contact = ({contactName, contactValue}) => {
     return contactValue && (
-        <a className={s.contact} href={contactValue} target='_blank'>
+        <a className={s.contact} href={contactValue} target='_blank'  rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" xmlnsXlink="http://www.w3.org/2000/xlink">
                 <use  xlinkHref={`#${contactName}`} x={0} y={0}/>
             </svg>
@@ -12,13 +12,15 @@ const Contact = ({contactName, contactValue}) => {
     )
 }
 
-export const Contacts = data => {
+export const Contacts = ({contacts}) => {
     return (
-        Object.keys(data.contacts)
-            .map((contact, i) =>
-                <Contact key={i}
-                         contactName={contact}
-                         contactValue={data.contacts[contact]}
-                />)
+        Object.keys(contacts).some(contact => contacts[contact] !== null && contacts[contact] !== '')
+            ? Object.keys(contacts)
+                .map((contact, i) =>
+                    <Contact key={i}
+                             contactName={contact}
+                             contactValue={contacts[contact]}
+                    />)
+            : <b>not added</b>
     )
 }

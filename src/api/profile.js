@@ -26,7 +26,8 @@ const profileAPI = {
 
     saveProfile(profile) {
         return instance
-            .put(`profile`, profile);
+            .put(`profile`, profile)
+            .then(response => response.data);
     }
 }
 

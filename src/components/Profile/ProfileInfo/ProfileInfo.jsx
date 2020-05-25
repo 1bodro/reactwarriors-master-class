@@ -10,9 +10,10 @@ import {Contacts} from "./Contacts/Contacts";
 export const ProfileInfo = props => {
     const {profile, status, isLoading, getUpdateUserStatus, isOwner, savePhoto, saveProfile} = props;
     const [editMode, setEditMode] = useState(false);
-    const onSubmit = formData => {
-        saveProfile(formData);
-        setEditMode(false);
+    const onSubmit = async formData => {
+        const promise = await saveProfile(formData);
+
+        promise && setEditMode(false);
     }
 
     return (
@@ -29,28 +30,32 @@ export const ProfileInfo = props => {
                         </div>
                     </div>
                     <div className={s.info}>
+                        <div className={s.info__status}>
+                            <ProfileStatusWithHooks getUpdateUserStatus={getUpdateUserStatus} status={status} isOwner={isOwner}/>
+                        </div>
                         <div className={s.info__account}>
                             {isOwner
-                            ? <UserAvatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId} savePhoto={savePhoto} />
-                            : <Avatar size="lg" src={profile.photos? profile.photos.large : null} id={profile.userId}/>}
-                                <div className={s.info__account__details}>
-                                    <span className={s.info__account__name}>{profile.fullName}</span>
-                                    <ProfileStatusWithHooks getUpdateUserStatus={getUpdateUserStatus} status={status} />
-                                </div>
+                                ? <UserAvatar size="lg" src={profile.photos ? profile.photos.large : null}
+                                              id={profile.userId} savePhoto={savePhoto}/>
+                                : <Avatar size="lg" src={profile.photos ? profile.photos.large : null}
+                                          id={profile.userId}/>}
+                            <span className={s.info__account__name}>{profile.fullName}</span>
                         </div>
                         <div className={s.info__description}>
-                            <ProfileData profile={profile} />
+                            <ProfileData profile={profile}/>
                         </div>
                         <div className={s.info__footer}>
-                            {isOwner && <button className={s.info__editButton} onClick={() => setEditMode(true)}>edit</button>}
+                            {isOwner &&
+                            <button className={s.info__editButton} onClick={() => setEditMode(true)}>edit</button>}
                             <div className={s.info__contacts}>
                                 <span>Contacts:</span>
                                 <Contacts contacts={profile.contacts}/>
                             </div>
                         </div>
                     </div>
-                    <div className={`${s.editProfilePopup} ${editMode? s.open : ''}` }>
-                        {editMode && <ProfileDataFormRedux  initialValues={profile} onSubmit={onSubmit} onClosePopup={() => setEditMode(false)} /> }
+                    <div className={`${s.editProfilePopup} ${editMode ? s.open : ''}`}>
+                        {editMode && <ProfileDataFormRedux initialValues={profile} onSubmit={onSubmit}
+                                                           onClosePopup={() => setEditMode(false)}/>}
                     </div>
                 </>}
         </>

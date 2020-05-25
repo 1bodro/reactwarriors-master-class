@@ -1,5 +1,6 @@
 import { profilePage } from "./data";
 import profileAPI from "../../api/profile";
+import {SubmissionError} from "redux-form";
 
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
@@ -70,12 +71,13 @@ export const savePhotoSuccess = photos => ({type: SAVE_PHOTO_SUCCESS, photos: ph
 
 //thunks
 
-export const getProfile = (userId, isOwner=false) => dispatch => {
-  dispatch(setIsLoadingProfile(true));
+export const getProfile = (userId, isOwner= false, needPreload = false, ) => dispatch => {
+
+    needPreload && dispatch(setIsLoadingProfile(true));
   profileAPI.getProfile(userId)
       .then(response => {
         dispatch(setUserProfile(response.data));
-        dispatch(setIsLoadingProfile(false));
+        needPreload && dispatch(setIsLoadingProfile(false));
         isOwner && dispatch(setUser(response.data));
       })
       .catch(error => console.log(error));
@@ -104,6 +106,36 @@ export const savePhoto = photo => async dispatch => {
 export const saveProfile = profile => async (dispatch, getState) => {
     const userId = getState().auth.id;
     let response = await profileAPI.saveProfile(profile);
-    (response.resultCode === 0) && dispatch(getProfile(userId));
+
+    if (response.resultCode === 0) {
+        dispatch(getProfile(userId, true));
+        return Promise.resolve(true);
+    } else {
+        const messages = response.messages;
+        const errors={
+            contacts:{}
+        };
+
+        messages.forEach(message => {
+            const messageArr = message.split('(');
+            const errorText = messageArr[0].trim();
+            const keys = messageArr[1].replace(')', '').split('->');
+
+            if (keys.length === 1) {
+
+                errors[_generateErrorKey(keys[0])] = errorText;
+            } else {
+                errors.contacts[_generateErrorKey(keys[1])] = errorText;
+            }
+        });
+
+        throw new SubmissionError({...errors});
+
+    }
+
+    function _generateErrorKey(key) {
+        if (!key) return key;
+        return (key[0].toLowerCase() + key.slice(1));
+    }
 }
 export default profileReducer;

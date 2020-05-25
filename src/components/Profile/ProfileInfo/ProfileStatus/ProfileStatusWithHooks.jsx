@@ -4,7 +4,7 @@ import s from "./ProfileStatus.module.scss";
 
 
 export const ProfileStatusWithHooks = props => {
-    const {status,getUpdateUserStatus} = props;
+    const {status,getUpdateUserStatus, isOwner} = props;
 
     let [editMode, setEditMode] = useState(false);
     let [editStatus, setStatus] = useState(status);
@@ -27,15 +27,13 @@ export const ProfileStatusWithHooks = props => {
     }
 
     return (
-        <div className={s.container}>
-            {editMode
-                ? <div className={s.change}>
+        <>
+            {editMode && isOwner
+                ? <div className={s.changeStatus}>
                     <input onChange = {onStatusChange} onBlur={deactivateEditMode} value={editStatus} autoFocus={true}/>
                 </div>
-                : <div className={s.status}>
-                    <span onDoubleClick={activateEditMode}>{status||'Write your status here'}</span>
-                </div>
+                : <span className={`${s.staticStatus} ${isOwner? s.hoverEffect : ''}`} onClick={activateEditMode}>{status||'Have a nice day'}</span>
             }
-        </div>
+        </>
     );
 }
