@@ -8,7 +8,7 @@ export const authAPI = {
     },
     login: function (data) {
         return instance
-            .post(`/auth/login`, {rememberMe: false,...data })
+            .post(`/auth/login`, {rememberMe: false, captcha: null, ...data })
             .then(response => response.data)
     },
     logout: function () {

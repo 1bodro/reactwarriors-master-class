@@ -4,18 +4,24 @@ import {Field, reduxForm} from "redux-form"
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
-const LoginForm = props => {
-    if (props.isAuth) {
+const LoginForm = ({isAuth, handleSubmit, error, captchaUrl, ...props}) => {
+    if (isAuth) {
         return <Redirect to={"/profile"} />
     }
 
   return (
-    <form className={s.container} onSubmit={props.handleSubmit}>
-        {props.error && <div className={s.summaryError}>{props.error}</div>}
+    <form className={s.container} onSubmit={handleSubmit}>
+        {error && <div className={s.summaryError}>{error}</div>}
         <div className={s.fieldBlock}><Field type= "text" placeholder="login" name="email" component={Input} validate={[required]} /></div>
         <div className={s.fieldBlock}><Field type="password" placeholder="Password" name="password" component={Input} validate={[required]} /></div>
         <div className={s.fieldBlock}><Field type="checkbox" component={"input"} name="rememberMe" />Remember me</div>
         <div className={s.fieldBlock}><button className={s.btnSend}>Login</button></div>
+        {captchaUrl && (
+            <>
+                <img src={captchaUrl} />
+                <div className={s.fieldBlock}><Field type= "text" placeholder="captcha" name="captcha" component={Input} validate={[required]} /></div>
+            </>
+            )}
     </form>
   );
 };
