@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import s from "./Pagination.module.scss";
+import cn from "classnames";
 
 export const Pagination = props => {
     const {onPageChanged, pagesCount, currentPage } = props;
@@ -33,7 +34,7 @@ export const Pagination = props => {
                                 onClick={() => {
                                     onPageChanged(paginationNumber)
                                 }}
-                                className={`${s.page} ${(paginationNumber === currentPage) ? s['page__active'] : ''}`}>
+                                className={cn(s.page, {[s['page__active']]: paginationNumber === currentPage})}>
                             {paginationNumber}
                         </span>
                         )
