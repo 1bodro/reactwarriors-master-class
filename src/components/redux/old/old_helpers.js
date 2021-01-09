@@ -1,4 +1,4 @@
-import * as data from "./state";
+import * as data from "../data";
 
 // lessons before 37
 let renderEntireTree = new function() {}();
@@ -7,7 +7,7 @@ export const addPost = () => {
   let newPost = {
     id: 123,
     text: data.profile.newPostText,
-    likesCout: 0
+    likesCount: 0
   };
   data.profile.newPostText = "";
   data.profile.posts.push(newPost);
@@ -26,7 +26,7 @@ export const subscribe = observer => (renderEntireTree = observer);
 //   let newPost = {
 //     id: 123,
 //     text: postMsg,
-//     likesCout: 0
+//     likesCount: 0
 //   };
 //   data.profile.posts.push(newPost);
 //   renderEntireTree(data);

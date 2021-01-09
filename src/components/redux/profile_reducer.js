@@ -15,7 +15,7 @@ const profileReducer = (state = profilePage, action) => {
             let newPost = {
                 id: 123,
                 text: action.newPostText,
-                likesCout: 0
+                likesCount: 0
             };
 
             return {

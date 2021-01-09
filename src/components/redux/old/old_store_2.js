@@ -1,8 +1,10 @@
-import * as data from "./data";
-import profileReduser from "./profile_reduser";
-import dialogsReduser from "./dialogs_reduser";
-import sidebarReduser from "./sidebar_reduser";
-import findUsersReduser from "./find_users_reduser";
+// import * as data from "./store";
+import profileReduser from "../profile_reducer";
+import dialogsReduser from "../dialogs_reducer";
+import sidebarReduser from "../sidebar_reducer";
+import findUsersReduser from "../find_users_reducer";
+const data = {};
+
 export const store = {
   _state: data,
   _callSubscrible() {},

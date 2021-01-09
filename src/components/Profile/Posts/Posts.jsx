@@ -18,7 +18,7 @@ export const Posts = React.memo(props => {
     <Post
       key={post.id}
       message={post.text}
-      likesCout={post.likesCout}
+      likesCount={post.likesCount}
       photo={userPhoto}
     />
   ));

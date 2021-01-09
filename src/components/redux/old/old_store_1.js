@@ -1,4 +1,4 @@
-import * as data from "./data";
+import * as data from "../data";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -20,7 +20,7 @@ export const store = {
     let newPost = {
       id: 123,
       text: this._state.profilePage.newPostText,
-      likesCout: 0
+      likesCount: 0
     };
     this._state.profilePage.newPostText = "";
     this._state.profilePage.posts.push(newPost);
